@@ -17,6 +17,7 @@ a{color:inherit;text-decoration:none}
 .label.green{color:var(--green)}.label.gray{color:var(--gray3)}
 .fi{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
 .fi.v{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.fi,.fi.v{opacity:1;transform:none;transition:none}}
 
 /* NAV */
 #nav{position:fixed;top:0;left:0;right:0;z-index:200;height:58px;background:var(--black);border-bottom:2px solid var(--yellow);display:flex;align-items:center;justify-content:space-between;padding:0 48px}
@@ -564,7 +565,7 @@ footer{background:var(--black);padding:64px 0 40px;border-top:3px solid var(--ye
     </div>
   </div>
 </footer>
-
+<noscript><style>.fi,.fi.v{opacity:1!important;transform:none!important}</style></noscript>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const NOTION={token:'HIER_DEINEN_TOKEN_EINTRAGEN',db:{kpi:'22cf860f054e479ca7115ae226e2a2bc',tourplan:'080cddd2277b4b11bd0fd6ac5d7455c1'}};
 const FB={kpi:{raised:0,sponsoring:0,sponsors:0,vlogs:0,reels:0,li_posts:0,wa:0,hours:0,photos:0,li_f:36000,tt_f:0,ig_f:700,yt_f:0,camp:0,ltu:0,interviews:0,cities:0,hubs:0,events:0,media:0},tour:{current:{city:'—',date:'Tour startet am 13. April 2026',events:[]},upcoming:[]}};
@@ -605,22 +606,40 @@ function renderTour(t){
   ul.innerHTML=t.upcoming.length?t.upcoming.map(u=>`<div class="nu-item"><div><div class="nu-ic">${u.city}</div><div class="nu-id">${u.date}</div></div><div class="nu-in">${u.num}</div></div>`).join(''):`<div style="display:flex;align-items:center;justify-content:center;flex:1;color:#555;font-family:var(--fm);font-size:11px;background:var(--white);border:2px solid var(--black);padding:28px;">Tourplan wird in Notion gepflegt.</div>`;
 }
 
+function notionConfigured(){const t=NOTION.token;return t&&t!=='DEIN_NOTION_INTEGRATION_TOKEN'&&t!=='HIER_DEINEN_TOKEN_EINTRAGEN';}
+
+function showKpiShell(){
+  const loading=document.getElementById('kpi-loading'),content=document.getElementById('kpi-content');
+  if(loading)loading.style.display='none';
+  if(content)content.style.display='block';
+}
+
 async function init(){
-  const loading=document.getElementById('kpi-loading'),content=document.getElementById('kpi-content'),error=document.getElementById('kpi-error');
-  if(NOTION.token==='DEIN_NOTION_INTEGRATION_TOKEN'){loading.style.display='none';content.style.display='block';renderKPI(FB.kpi);renderTour(FB.tour);return;}
+  const error=document.getElementById('kpi-error');
+  if(!notionConfigured()){showKpiShell();renderKPI(FB.kpi);renderTour(FB.tour);return;}
+  const withTimeout=(p,ms)=>Promise.race([p,new Promise((_,rej)=>setTimeout(()=>rej(new Error('timeout')),ms))]);
   try{
-    const[kr,tr]=await Promise.all([fNotion(NOTION.db.kpi),fNotion(NOTION.db.tourplan)]);
-    loading.style.display='none';content.style.display='block';
+    const[kr,tr]=await withTimeout(Promise.all([fNotion(NOTION.db.kpi),fNotion(NOTION.db.tourplan)]),12000);
+    showKpiShell();
     renderKPI(parseKPI(kr.results)||FB.kpi);renderTour(parseTour(tr.results));
-  }catch(e){console.error('[Notion]',e);loading.style.display='none';content.style.display='block';error.style.display='block';renderKPI(FB.kpi);renderTour(FB.tour);}
+  }catch(e){console.error('[Notion]',e);showKpiShell();if(error)error.style.display='block';renderKPI(FB.kpi);renderTour(FB.tour);}
 }
 
 function handleCTA(){const email=document.getElementById('cta-email').value.trim();if(!email||!email.includes('@')){alert('Bitte eine gültige E-Mail-Adresse eingeben.');return;}window.location.href=`mailto:darius@youngfoundersnetwork.de?subject=Sponsoring-Anfrage%20YFN%20Tour%202026&body=Hallo%20Darius%2C%0A%0Aich%20interessiere%20mich%20f%C3%BCr%20eine%20Sponsoring-Kooperation.%0A%0AMeine%20E-Mail%3A%20${encodeURIComponent(email)}`;}
 
+function revealFiNearViewport(){
+  const h=window.innerHeight||document.documentElement.clientHeight;
+  document.querySelectorAll('.fi').forEach(el=>{
+    const r=el.getBoundingClientRect();
+    if(r.bottom>0&&r.top<h*0.98)el.classList.add('v');
+  });
+}
 const obs=new IntersectionObserver(entries=>entries.forEach(e=>{
   if(e.isIntersecting)e.target.classList.add('v');
-}),{rootMargin:'0px 0px -10% 0px',threshold:0.05});
+}),{rootMargin:'0px 0px 8% 0px',threshold:0.01});
 document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+revealFiNearViewport();
+window.addEventListener('resize',revealFiNearViewport,{passive:true});
 init();
 </script>
 </body>
