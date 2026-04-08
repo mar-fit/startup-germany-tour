@@ -149,16 +149,15 @@ section{padding:96px 0}
 
 /* TEAM */
 #team{background:var(--white)}
-.tg{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--black);margin-top:56px}
-.tc{background:var(--white);padding:40px 32px}
-.tc.ft{background:var(--black)}
-.tcp{width:72px;height:72px;border:2px solid var(--black);display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:22px;background:var(--gray)}
-.tc.ft .tcp{background:#1a1a1a;border-color:#333}
-.tcn{font-family:var(--fd);font-size:30px;line-height:1;margin-bottom:7px}
-.tc.ft .tcn{color:var(--yellow)}
-.tcr{font-family:var(--fm);font-size:9px;color:#999;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px}
-.tcb{font-size:13px;color:#555;line-height:1.6}
-.tc.ft .tcb{color:#888}
+.tg{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px;align-items:stretch}
+.tcard{background:var(--white);border:2px solid var(--black);display:flex;flex-direction:column;height:100%;min-height:0;overflow:hidden}
+.tcard-ph{aspect-ratio:1/1;width:100%;background:#d9d9d9;display:flex;align-items:center;justify-content:center;border-bottom:3px solid var(--yellow);flex-shrink:0}
+.tcard-ph svg{width:42%;max-width:120px;height:auto;color:#888;stroke:var(--black);opacity:.45}
+.tcard-body{padding:24px 22px 28px;display:flex;flex-direction:column;flex:1;gap:0}
+.tcard-name{font-family:var(--fd);font-size:clamp(26px,2.8vw,34px);line-height:1;color:var(--black);letter-spacing:.5px;margin:0 0 8px}
+.tcard-role{font-family:var(--fm);font-size:9px;color:var(--black);letter-spacing:1.8px;text-transform:uppercase;margin:0 0 14px;padding-bottom:14px;border-bottom:1px solid #e0e0e0}
+.tcard-bio{font-size:14px;color:#444;line-height:1.65;margin:0;flex:1}
+.tcard-ph--accent{background:linear-gradient(145deg,#e8e8e8 0%,#c8c8c8 100%)}
 
 /* PARTNER */
 #partner{background:var(--gray)}
@@ -214,7 +213,7 @@ footer{background:var(--black);padding:64px 0 40px;border-top:3px solid var(--ye
   #hero{grid-template-columns:1fr}.hero-right{display:none}
   .kg,.nu-grid,.mg,.fdg{grid-template-columns:1fr}.kc.full{grid-column:span 1}
   .fg{grid-template-columns:repeat(2,1fr)}.fsplit{grid-template-columns:1fr}
-  .tg{grid-template-columns:1fr 1fr}.pg{grid-template-columns:repeat(3,1fr)}
+  .tg{grid-template-columns:1fr}.pg{grid-template-columns:repeat(3,1fr)}
   .cg{grid-template-columns:repeat(2,1fr)}.fi3{grid-template-columns:1fr 1fr}
   .container{padding:0 24px}#nav{padding:0 24px}.nav-links{display:none}
 }
@@ -442,24 +441,36 @@ footer{background:var(--black);padding:64px 0 40px;border-top:3px solid var(--ye
       <h2 class="s-title">DAS <span class="inv">TEAM</span></h2>
     </div>
     <div class="tg fi">
-      <div class="tc ft">
-        <div class="tcp">🎬</div>
-        <div class="tcn">Darius Göttert</div>
-        <div class="tcr">Founder & Host</div>
-        <div class="tcb">YFN Co-Founder. Serial Entrepreneur. Initiator der Startup Germany Tour 2026. Er fährt die Tour, führt die Interviews und ist das Gesicht hinter der Kamera.</div>
-      </div>
-      <div class="tc">
-        <div class="tcp">📸</div>
-        <div class="tcn">Camera Lead</div>
-        <div class="tcr">Hauptkamera</div>
-        <div class="tcb">Wird noch besetzt. Bewerbungen über das YFN-Netzwerk.</div>
-      </div>
-      <div class="tc">
-        <div class="tcp">✂️</div>
-        <div class="tcn">Editor</div>
-        <div class="tcr">Post Production</div>
-        <div class="tcb">Wird noch besetzt. Probe-Schnitt läuft gerade.</div>
-      </div>
+      <article class="tcard">
+        <div class="tcard-ph tcard-ph--accent" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div class="tcard-body">
+          <h3 class="tcard-name">Darius Göttert</h3>
+          <p class="tcard-role">Founder &amp; Host</p>
+          <p class="tcard-bio">YFN Co-Founder. Serial Entrepreneur. Initiator der Startup Germany Tour 2026. Er fährt die Tour, führt die Interviews und ist das Gesicht hinter der Kamera.</p>
+        </div>
+      </article>
+      <article class="tcard">
+        <div class="tcard-ph" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div class="tcard-body">
+          <h3 class="tcard-name">Name folgt</h3>
+          <p class="tcard-role">Camera Lead · Hauptkamera</p>
+          <p class="tcard-bio">Platzhalter — Bewerbungen und Anfragen über das Young Founders Network.</p>
+        </div>
+      </article>
+      <article class="tcard">
+        <div class="tcard-ph" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div class="tcard-body">
+          <h3 class="tcard-name">Name folgt</h3>
+          <p class="tcard-role">Editor · Post Production</p>
+          <p class="tcard-bio">Platzhalter — Profiltext und Credits werden ergänzt, sobald das Team komplett ist.</p>
+        </div>
+      </article>
     </div>
   </div>
 </section>
