@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Startup Germany Tour 2026 — Darius Göttert × YFN</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--yellow:#FFED00;--black:#000;--white:#fff;--green:#88FEBF;--purple:#6718DC;--gray:#F0F0F0;--gray2:#CCC;--gray3:#888;--fd:'Bebas Neue',sans-serif;--fm:'Space Mono',monospace;--fb:'Instrument Sans',sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);background:var(--white);color:var(--black);overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.container{max-width:1240px;margin:0 auto;padding:0 48px}
+.label{font-family:var(--fm);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--purple);display:inline-block;margin-bottom:14px}
+.label.green{color:var(--green)}.label.gray{color:var(--gray3)}
+.fi{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+.fi.v{opacity:1;transform:none}
+
+/* NAV */
+#nav{position:fixed;top:0;left:0;right:0;z-index:200;height:58px;background:var(--black);border-bottom:2px solid var(--yellow);display:flex;align-items:center;justify-content:space-between;padding:0 48px}
+.nav-brand{font-family:var(--fd);font-size:20px;letter-spacing:3px;color:var(--white);display:flex;align-items:center;gap:10px}
+.nav-tag{background:var(--yellow);color:var(--black);padding:2px 8px;font-size:18px}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{font-family:var(--fm);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--white);transition:color .2s}
+.nav-links a:hover{color:var(--yellow)}
+.nav-cta{background:var(--yellow)!important;color:var(--black)!important;padding:8px 22px;font-weight:700!important}
+.nav-cta:hover{background:var(--white)!important}
+
+/* HERO */
+#hero{margin-top:58px;background:var(--black);min-height:calc(100vh - 58px);display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden}
+.hero-left{padding:80px 60px 80px 48px;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2}
+.hero-ey{font-family:var(--fm);font-size:10px;letter-spacing:3px;color:var(--yellow);text-transform:uppercase;border:1px solid var(--yellow);display:inline-block;padding:5px 14px;margin-bottom:28px}
+.hero-h1{font-family:var(--fd);font-size:clamp(68px,7.5vw,118px);line-height:.92;letter-spacing:1px;color:var(--white)}
+.hero-h1 .y{color:var(--yellow)}
+.hero-by{margin-top:28px;font-size:17px;line-height:1.7;color:var(--gray2);max-width:430px}
+.hero-by strong{color:var(--white)}
+.hero-stats{margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#1c1c1c;border:1px solid #222}
+.hstat{background:var(--black);padding:22px 18px;text-align:center}
+.hstat-n{font-family:var(--fd);font-size:46px;color:var(--yellow);display:block;line-height:1}
+.hstat-l{font-family:var(--fm);font-size:9px;color:var(--gray3);letter-spacing:1px;text-transform:uppercase;margin-top:5px}
+.hero-btns{margin-top:40px;display:flex;gap:14px;flex-wrap:wrap}
+.btn-y{background:var(--yellow);color:var(--black);padding:15px 34px;font-family:var(--fm);font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;border:2px solid var(--yellow);cursor:pointer;transition:all .2s;display:inline-block}
+.btn-y:hover{background:transparent;color:var(--yellow)}
+.btn-g{background:transparent;color:var(--white);padding:15px 34px;font-family:var(--fm);font-size:12px;letter-spacing:1px;text-transform:uppercase;border:2px solid #333;cursor:pointer;transition:all .2s;display:inline-block}
+.btn-g:hover{border-color:var(--white)}
+.hero-right{position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-gbg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,237,0,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,237,0,.04) 1px,transparent 1px);background-size:48px 48px}
+.hero-glow{position:absolute;width:360px;height:360px;background:radial-gradient(circle,rgba(255,237,0,.12) 0%,transparent 70%);border-radius:50%}
+.hero-svg{position:relative;z-index:2;width:300px}
+
+/* TICKER */
+#ticker{background:var(--yellow);height:42px;border-top:2px solid var(--black);border-bottom:2px solid var(--black);overflow:hidden;display:flex;align-items:center}
+.tt{display:flex;align-items:center;animation:tick 28s linear infinite;white-space:nowrap}
+.ti{font-family:var(--fm);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;padding:0 36px;color:var(--black)}
+.td{color:#555}
+@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* SECTIONS */
+section{padding:96px 0}
+.s-head{margin-bottom:56px}
+.s-title{font-family:var(--fd);font-size:clamp(44px,5.5vw,78px);line-height:.94;letter-spacing:1px}
+.s-title .inv{background:var(--black);color:var(--yellow);padding:0 6px}
+.s-title .invw{background:var(--yellow);color:var(--black);padding:0 6px}
+
+/* DASHBOARD */
+#dashboard{background:var(--black);color:var(--white)}
+#dashboard .s-title{color:var(--white)}
+.dash-top{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:52px}
+.notion-live{font-family:var(--fm);font-size:10px;letter-spacing:1px;color:var(--green);border:1px solid var(--green);padding:6px 14px;display:flex;align-items:center;gap:8px}
+.pulse{width:7px;height:7px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+.kpi-load{font-family:var(--fm);font-size:11px;color:#444;padding:20px 0}
+.kpi-err{font-family:var(--fm);font-size:11px;color:#444;padding:16px;border:1px solid #222;margin-top:16px}
+.kg{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:#1a1a1a}
+.kc{background:#0d0d0d;padding:32px}
+.kc.full{grid-column:span 2}
+.kch{font-family:var(--fm);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gray3);margin-bottom:26px}
+.fbig{font-family:var(--fd);font-size:72px;color:var(--yellow);line-height:1}
+.fgoal{font-family:var(--fm);font-size:10px;color:#444;letter-spacing:1.5px;text-transform:uppercase;margin-top:6px}
+.fsplit{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end}
+.br{display:flex;justify-content:space-between;margin-bottom:7px}
+.bn{font-family:var(--fm);font-size:9px;color:#555;text-transform:uppercase;letter-spacing:1px}
+.bp{font-family:var(--fm);font-size:9px;color:var(--yellow)}
+.bt{height:3px;background:#1e1e1e}
+.bf{height:100%;background:var(--yellow);transition:width 1.8s ease}
+.bf.g{background:var(--green)}.bf.p{background:var(--purple)}.bf.gr{background:linear-gradient(90deg,var(--yellow),var(--green))}
+.ms{display:flex;gap:28px;margin-top:28px}
+.msv{font-family:var(--fd);font-size:40px;color:var(--white);display:block;line-height:1}
+.msl{font-family:var(--fm);font-size:9px;color:#555;text-transform:uppercase;letter-spacing:1px;margin-top:4px}
+.cbl{display:flex;flex-direction:column;gap:18px}
+.en{display:flex;gap:28px;margin-top:20px}
+.fg{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:#1a1a1a}
+.fc{background:#0a0a0a;padding:24px 18px;text-align:center}
+.fch{font-family:var(--fm);font-size:9px;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px}
+.fcn{font-family:var(--fd);font-size:38px;color:var(--white);display:block;line-height:1}
+.fca{color:var(--yellow);font-size:16px;margin:6px 0;display:block}
+.fcg{font-family:var(--fm);font-size:10px;color:var(--yellow)}
+.km{display:flex;flex-wrap:wrap;gap:28px}
+.kmv{font-family:var(--fd);font-size:48px;color:var(--white);display:block;line-height:1}
+.kml{font-family:var(--fm);font-size:9px;color:#444;text-transform:uppercase;letter-spacing:1px;margin-top:4px}
+
+/* NEXT UP */
+#nextup{background:var(--yellow)}
+#nextup .s-title{color:var(--black)}
+.nu-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:52px}
+.nu-cur{background:var(--black);padding:40px}
+.nu-lt{font-family:var(--fm);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--green);display:flex;align-items:center;gap:8px;margin-bottom:20px}
+.ldot{width:8px;height:8px;background:var(--green);border-radius:50%;animation:pulse 1.5s infinite}
+.nu-city{font-family:var(--fd);font-size:64px;color:var(--white);line-height:1}
+.nu-date{font-family:var(--fm);font-size:11px;color:#555;margin-top:10px}
+.nu-evts{margin-top:24px}
+.nu-evt{border-top:1px solid #1a1a1a;padding:11px 0;display:flex;justify-content:space-between;align-items:center}
+.nu-en{font-size:13px;color:var(--white)}.nu-et{font-family:var(--fm);font-size:10px;color:#444}
+.nu-up{display:flex;flex-direction:column;gap:10px}
+.nu-item{background:var(--white);border:2px solid var(--black);padding:18px 24px;display:flex;align-items:center;justify-content:space-between}
+.nu-ic{font-family:var(--fd);font-size:30px;color:var(--black)}
+.nu-id{font-family:var(--fm);font-size:9px;color:#888;text-transform:uppercase;letter-spacing:1px;margin-top:2px}
+.nu-in{font-family:var(--fd);font-size:44px;color:#ddd;line-height:1}
+
+/* MANIFEST */
+#manifest{background:var(--white)}
+.mg{display:grid;grid-template-columns:1fr 2fr;gap:80px;margin-top:56px}
+.ms2{position:sticky;top:90px}
+.mstr{width:4px;height:72px;background:var(--yellow);margin-bottom:28px}
+.mlt{font-family:var(--fd);font-size:52px;line-height:.94;letter-spacing:1px}
+.mlt .hy{background:var(--yellow);padding:0 4px}
+.mls{font-family:var(--fm);font-size:10px;color:#999;letter-spacing:1.5px;text-transform:uppercase;margin-top:18px}
+.mb{font-size:17px;line-height:1.85;color:#111}
+.mb p{margin-bottom:22px}
+.mb p:first-child{font-size:20px;font-weight:600;line-height:1.65}
+.mbox{background:var(--black);color:var(--white);padding:32px;margin-top:36px}
+.mbt{font-family:var(--fd);font-size:32px;color:var(--yellow);margin-bottom:10px}
+.mbb{font-size:14px;line-height:1.75;color:#aaa}
+
+/* MAP */
+#map{background:var(--black)}
+#map .s-title{color:var(--white)}
+.map-wrap{margin-top:52px;background:#080808;border:1px solid #1c1c1c;padding:40px;display:flex;justify-content:center;align-items:center;min-height:560px;position:relative}
+.map-gbg{position:absolute;inset:0;background-image:linear-gradient(#111 1px,transparent 1px),linear-gradient(90deg,#111 1px,transparent 1px);background-size:40px 40px}
+.map-svg{position:relative;z-index:2;width:100%;max-width:560px}
+.cg{margin-top:40px;display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:#1a1a1a}
+.cr{background:#0d0d0d;padding:14px 18px;display:flex;align-items:center;justify-content:space-between}
+.cn{font-size:13px;font-weight:600;color:var(--white)}
+.cs{font-family:var(--fm);font-size:8px;letter-spacing:1px;text-transform:uppercase;padding:3px 8px}
+.sc{background:var(--green);color:var(--black)}.sp{border:1px solid #222;color:#3a3a3a}
+
+/* TEAM */
+#team{background:var(--white)}
+.tg{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--black);margin-top:56px}
+.tc{background:var(--white);padding:40px 32px}
+.tc.ft{background:var(--black)}
+.tcp{width:72px;height:72px;border:2px solid var(--black);display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:22px;background:var(--gray)}
+.tc.ft .tcp{background:#1a1a1a;border-color:#333}
+.tcn{font-family:var(--fd);font-size:30px;line-height:1;margin-bottom:7px}
+.tc.ft .tcn{color:var(--yellow)}
+.tcr{font-family:var(--fm);font-size:9px;color:#999;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px}
+.tcb{font-size:13px;color:#555;line-height:1.6}
+.tc.ft .tcb{color:#888}
+
+/* PARTNER */
+#partner{background:var(--gray)}
+.pi{font-size:16px;color:#555;max-width:560px;margin-top:16px;line-height:1.7}
+.pg{margin-top:52px;display:grid;grid-template-columns:repeat(5,1fr);gap:2px;background:var(--black)}
+.ps{background:var(--white);height:110px;display:flex;align-items:center;justify-content:center;font-family:var(--fm);font-size:9px;color:#ccc;text-transform:uppercase;letter-spacing:1px;transition:background .2s,color .2s}
+.ps:hover{background:var(--yellow);color:var(--black)}
+.ps.fi2{font-family:var(--fd);font-size:24px;letter-spacing:2px;color:var(--black)}
+.ps.add{border:2px dashed #ccc;background:transparent;color:#bbb}
+.ps.add:hover{border-color:var(--black);background:var(--yellow);color:var(--black)}
+
+/* FEEDS */
+#feeds{background:var(--white)}
+.fdg{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:56px}
+.fdhd{display:flex;align-items:center;gap:16px;margin-bottom:22px}
+.fdic{width:42px;height:42px;background:var(--black);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:18px;color:var(--yellow)}
+.fdtl{font-family:var(--fd);font-size:30px}
+.fdhl{font-family:var(--fm);font-size:10px;color:#999}
+.fdph{border:2px dashed #ddd;min-height:360px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:#ccc}
+.fdpi{font-size:44px;opacity:.3}
+.fdpt{font-family:var(--fm);font-size:10px;text-transform:uppercase;letter-spacing:1px}
+.fdps{font-size:12px;color:#ccc;text-align:center;max-width:200px;line-height:1.6}
+
+/* CTA */
+#cta{background:var(--yellow);padding:120px 0;text-align:center}
+.cta-h{font-family:var(--fd);font-size:clamp(60px,9vw,120px);line-height:.9;color:var(--black);margin-bottom:36px}
+.cta-s{font-size:18px;color:#333;line-height:1.65;max-width:560px;margin:0 auto 44px}
+.cta-f{display:flex;max-width:500px;margin:0 auto}
+.cta-i{flex:1;padding:17px 22px;font-family:var(--fm);font-size:12px;border:2px solid var(--black);border-right:none;background:var(--white);outline:none}
+.cta-b{padding:17px 30px;background:var(--black);color:var(--yellow);font-family:var(--fm);font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;border:2px solid var(--black);cursor:pointer;transition:all .2s}
+.cta-b:hover{background:var(--white);color:var(--black)}
+.cta-d{margin-top:18px;font-family:var(--fm);font-size:10px;color:#555;letter-spacing:1px}
+
+/* FOOTER */
+footer{background:var(--black);padding:64px 0 40px;border-top:3px solid var(--yellow)}
+.fi3{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:56px;margin-bottom:56px}
+.fbn{font-family:var(--fd);font-size:28px;color:var(--white);letter-spacing:2px;margin-bottom:6px}
+.fbn span{background:var(--yellow);color:var(--black);padding:0 5px}
+.fbd{font-size:13px;color:#444;line-height:1.65;margin-top:10px;max-width:260px}
+.fct{font-family:var(--fm);font-size:9px;color:var(--yellow);text-transform:uppercase;letter-spacing:2px;margin-bottom:18px}
+.fcol ul{list-style:none}
+.fcol ul li{margin-bottom:9px}
+.fcol ul li a{font-size:13px;color:#555;transition:color .2s}
+.fcol ul li a:hover{color:var(--white)}
+.fb{border-top:1px solid #111;padding-top:28px;display:flex;justify-content:space-between;align-items:center}
+.fl{font-family:var(--fm);font-size:9px;color:#333;letter-spacing:1px}
+.fso{display:flex;gap:20px}
+.fso a{font-family:var(--fm);font-size:9px;color:#444;letter-spacing:1px;transition:color .2s}
+.fso a:hover{color:var(--yellow)}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  #hero{grid-template-columns:1fr}.hero-right{display:none}
+  .kg,.nu-grid,.mg,.fdg{grid-template-columns:1fr}.kc.full{grid-column:span 1}
+  .fg{grid-template-columns:repeat(2,1fr)}.fsplit{grid-template-columns:1fr}
+  .tg{grid-template-columns:1fr 1fr}.pg{grid-template-columns:repeat(3,1fr)}
+  .cg{grid-template-columns:repeat(2,1fr)}.fi3{grid-template-columns:1fr 1fr}
+  .container{padding:0 24px}#nav{padding:0 24px}.nav-links{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-brand"><span class="nav-tag">YFN</span> STARTUP TOUR</div>
+  <div class="nav-links">
+    <a href="#dashboard">Dashboard</a>
+    <a href="#nextup">Next Up</a>
+    <a href="#manifest">Manifest</a>
+    <a href="#map">Route</a>
+    <a href="#team">Team</a>
+    <a href="#partner">Partner</a>
+    <a href="#cta" class="nav-cta">Sponsor werden</a>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-ey">13. April – 21. Juni 2026</div>
+    <h1 class="hero-h1">STARTUP<br><span class="y">GERMANY</span><br>TOUR</h1>
+    <p class="hero-by"><strong>Darius Göttert</strong> und das <strong>Young Founders Network</strong> fahren 9 Wochen mit einem Kamerateam durch Deutschland. 16 Städte. Was hier wirklich passiert.</p>
+    <div class="hero-stats">
+      <div class="hstat"><span class="hstat-n">16</span><span class="hstat-l">Städte</span></div>
+      <div class="hstat"><span class="hstat-n">50</span><span class="hstat-l">Drehtage</span></div>
+      <div class="hstat"><span class="hstat-n">760+</span><span class="hstat-l">Content Pieces</span></div>
+    </div>
+    <div class="hero-btns">
+      <a href="#cta" class="btn-y">Jetzt Partner werden</a>
+      <a href="#manifest" class="btn-g">Das Manifest lesen</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-gbg"></div>
+    <div class="hero-glow"></div>
+    <svg class="hero-svg" viewBox="0 0 380 480" xmlns="http://www.w3.org/2000/svg">
+      <path d="M185 28 L210 25 L240 22 L268 34 L282 56 L288 82 L305 100 L315 124 L308 148 L324 164 L330 188 L316 206 L302 218 L308 242 L316 268 L306 294 L290 316 L282 342 L268 366 L252 390 L236 412 L218 428 L200 438 L182 424 L164 404 L148 380 L136 354 L126 328 L114 306 L108 280 L116 258 L102 244 L92 220 L98 198 L112 182 L106 158 L118 136 L112 112 L124 90 L132 66 L148 46 L166 32 Z" fill="rgba(255,237,0,0.03)" stroke="#FFED00" stroke-width="1.5" opacity="0.5"/>
+      <polyline points="215,168 178,148 190,210 174,268 204,318 210,378" fill="none" stroke="#FFED00" stroke-width="1.5" stroke-dasharray="7,5" opacity="0.4"/>
+      <circle cx="270" cy="168" r="10" fill="#FFED00" opacity="0.15"/>
+      <circle cx="270" cy="168" r="5" fill="#FFED00"/>
+      <text x="283" y="172" fill="#FFED00" font-family="monospace" font-size="10" font-weight="bold">Berlin</text>
+      <text x="283" y="184" fill="#555" font-family="monospace" font-size="8">AKTUELL</text>
+      <circle cx="186" cy="120" r="4" fill="#88FEBF" opacity="0.7"/>
+      <text x="196" y="124" fill="#88FEBF" font-family="monospace" font-size="9">Hamburg</text>
+      <circle cx="174" cy="268" r="4" fill="#88FEBF" opacity="0.6"/>
+      <text x="118" y="272" fill="#88FEBF" font-family="monospace" font-size="9">Frankfurt</text>
+      <circle cx="238" cy="378" r="4" fill="#88FEBF" opacity="0.6"/>
+      <text x="248" y="382" fill="#88FEBF" font-family="monospace" font-size="9">München</text>
+      <circle cx="144" cy="234" r="4" fill="#88FEBF" opacity="0.5"/>
+      <text x="90" y="238" fill="#88FEBF" font-family="monospace" font-size="9">Köln</text>
+      <line x1="0" y1="240" x2="380" y2="240" stroke="#1a1a1a" stroke-width="1"/>
+      <line x1="190" y1="0" x2="190" y2="480" stroke="#1a1a1a" stroke-width="1"/>
+    </svg>
+  </div>
+</section>
+
+<div id="ticker">
+  <div class="tt">
+    <span class="ti">YFN Startup Germany Tour 2026</span><span class="ti td">✦</span>
+    <span class="ti">Darius Göttert × Young Founders Network</span><span class="ti td">✦</span>
+    <span class="ti">9 Wochen · 16 Städte · 50 Drehtage</span><span class="ti td">✦</span>
+    <span class="ti">760+ Content Pieces</span><span class="ti td">✦</span>
+    <span class="ti">1.900+ Young Founders</span><span class="ti td">✦</span>
+    <span class="ti">Jetzt Sponsor werden</span><span class="ti td">✦</span>
+    <span class="ti">YFN Startup Germany Tour 2026</span><span class="ti td">✦</span>
+    <span class="ti">Darius Göttert × Young Founders Network</span><span class="ti td">✦</span>
+    <span class="ti">9 Wochen · 16 Städte · 50 Drehtage</span><span class="ti td">✦</span>
+    <span class="ti">760+ Content Pieces</span><span class="ti td">✦</span>
+    <span class="ti">1.900+ Young Founders</span><span class="ti td">✦</span>
+    <span class="ti">Jetzt Sponsor werden</span><span class="ti td">✦</span>
+  </div>
+</div>
+
+<section id="dashboard">
+  <div class="container">
+    <div class="dash-top fi">
+      <div><span class="label green">Live Tracking</span><h2 class="s-title">KPI <span class="inv">DASHBOARD</span></h2></div>
+      <div class="notion-live"><span class="pulse"></span>Live aus Notion</div>
+    </div>
+    <div id="kpi-loading" class="kpi-load">Lade Daten aus Notion…</div>
+    <div id="kpi-content" style="display:none">
+      <div class="kg">
+        <div class="kc full">
+          <div class="kch">💰 Fundraising & Finanzen</div>
+          <div class="fsplit">
+            <div>
+              <div class="fbig" id="kpi-raised">0 €</div>
+              <div class="fgoal">YFN Fundraise-Ziel: 1.000.000 €</div>
+              <div style="margin-top:20px">
+                <div class="br"><span class="bn">Gesamt-Fortschritt</span><span class="bp" id="kpi-raised-pct">0%</span></div>
+                <div class="bt"><div class="bf gr" id="kpi-raised-bar" style="width:0%"></div></div>
+              </div>
+            </div>
+            <div>
+              <div class="ms">
+                <div><span class="msv" id="kpi-sponsoring">0 €</span><span class="msl">Sponsoring-Einnahmen</span></div>
+                <div><span class="msv" id="kpi-sponsors">0</span><span class="msl">Aktive Sponsoren</span></div>
+              </div>
+              <div style="margin-top:28px">
+                <div class="br"><span class="bn">Sponsoring-Ziel (196.000 €)</span><span class="bp" id="kpi-spon-pct">0%</span></div>
+                <div class="bt" style="margin-bottom:14px"><div class="bf g" id="kpi-spon-bar" style="width:0%"></div></div>
+                <div class="br"><span class="bn">Presenting Partner (70.000 €)</span><span class="bp" id="kpi-pp-pct">0%</span></div>
+                <div class="bt"><div class="bf" id="kpi-pp-bar" style="width:0%"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="kc">
+          <div class="kch">🎬 Content & Social Media</div>
+          <div class="cbl">
+            <div><div class="br"><span class="bn">YouTube Vlogs</span><span class="bp"><span id="kpi-vlogs">0</span> / 100</span></div><div class="bt"><div class="bf" id="kpi-vlogs-b" style="width:0%"></div></div></div>
+            <div><div class="br"><span class="bn">Reels</span><span class="bp"><span id="kpi-reels">0</span> / 500</span></div><div class="bt"><div class="bf" id="kpi-reels-b" style="width:0%"></div></div></div>
+            <div><div class="br"><span class="bn">LinkedIn Posts</span><span class="bp"><span id="kpi-li-posts">0</span> / 150</span></div><div class="bt"><div class="bf g" id="kpi-li-b" style="width:0%"></div></div></div>
+            <div><div class="br"><span class="bn">WhatsApp Channel Pushes</span><span class="bp"><span id="kpi-wa">0</span> / 200</span></div><div class="bt"><div class="bf g" id="kpi-wa-b" style="width:0%"></div></div></div>
+          </div>
+          <div class="en">
+            <div><span class="msv" id="kpi-hours">0h</span><span class="msl">Stunden gedreht</span></div>
+            <div><span class="msv" id="kpi-photos">0</span><span class="msl">Bilder gemacht</span></div>
+          </div>
+        </div>
+        <div class="kc">
+          <div class="kch">📡 Reichweite & Follower</div>
+          <div class="fg">
+            <div class="fc"><div class="fch">LinkedIn</div><span class="fcn" id="kpi-li-f">36k</span><span class="fca">↑</span><div class="fcg">Ziel: 60.000</div></div>
+            <div class="fc"><div class="fch">TikTok</div><span class="fcn" id="kpi-tt-f">0</span><span class="fca">↑</span><div class="fcg">Ziel: 25k</div></div>
+            <div class="fc"><div class="fch">Instagram</div><span class="fcn" id="kpi-ig-f">700</span><span class="fca">↑</span><div class="fcg">Ziel: 15k</div></div>
+            <div class="fc"><div class="fch">YouTube</div><span class="fcn" id="kpi-yt-f">0</span><span class="fca">↑</span><div class="fcg">Ziel: 6k</div></div>
+          </div>
+        </div>
+        <div class="kc">
+          <div class="kch">🌱 Impact & Community</div>
+          <div>
+            <div class="br"><span class="bn">Summer Camp Bewerbungen</span><span class="bp"><span id="kpi-camp">0</span> / 300</span></div>
+            <div class="bt" style="margin-bottom:16px"><div class="bf p" id="kpi-camp-b" style="width:0%"></div></div>
+            <div class="br"><span class="bn">Life Teach Us Stunden</span><span class="bp"><span id="kpi-ltu">0</span> / 50</span></div>
+            <div class="bt"><div class="bf p" id="kpi-ltu-b" style="width:0%"></div></div>
+          </div>
+          <div class="en"><div><span class="msv" id="kpi-interviews">0</span><span class="msl">Interviews geführt</span></div></div>
+        </div>
+        <div class="kc">
+          <div class="kch">🗺️ Tour & Netzwerk</div>
+          <div class="km">
+            <div><span class="kmv" id="kpi-cities">0</span><span class="kml">Städte besucht</span></div>
+            <div><span class="kmv" id="kpi-hubs">0</span><span class="kml">Startup Hubs</span></div>
+            <div><span class="kmv" id="kpi-events">0</span><span class="kml">Events besucht</span></div>
+            <div><span class="kmv" id="kpi-media">0</span><span class="kml">Medienberichte</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="kpi-error" class="kpi-err" style="display:none">⚠ Notion-Daten konnten nicht geladen werden.</div>
+  </div>
+</section>
+
+<section id="nextup">
+  <div class="container">
+    <div class="s-head fi">
+      <span class="label gray">Tourplan</span>
+      <h2 class="s-title">NEXT <span class="invw">UP</span></h2>
+    </div>
+    <div class="nu-grid fi">
+      <div class="nu-cur">
+        <div class="nu-lt"><span class="ldot"></span>Aktuell vor Ort</div>
+        <div class="nu-city" id="nu-city">—</div>
+        <div class="nu-date" id="nu-date">Wird aus Notion geladen…</div>
+        <div class="nu-evts" id="nu-evts">
+          <div class="nu-evt"><span class="nu-en" style="color:#333">Keine Events eingetragen</span><span class="nu-et">—</span></div>
+        </div>
+      </div>
+      <div class="nu-up" id="nu-up">
+        <div style="display:flex;align-items:center;justify-content:center;flex:1;color:#555;font-family:var(--fm);font-size:11px;background:var(--white);border:2px solid var(--black);padding:28px;">Lade Tourplan aus Notion…</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="manifest">
+  <div class="container">
+    <div class="s-head fi">
+      <span class="label">Unser Antrieb</span>
+      <h2 class="s-title">DAS <span class="inv">MANIFEST</span></h2>
+    </div>
+    <div class="mg">
+      <div class="ms2 fi">
+        <div class="mstr"></div>
+        <div class="mlt">DEUTSCH<br>LAND<br>IST NICHT<br><span class="hy">AM ENDE.</span></div>
+        <div class="mls">Es fängt gerade an.</div>
+      </div>
+      <div class="mb fi">
+        <p>Deutschland wird gerade kleingeschrieben. In den Medien. In der Politik. In den Kommentarspalten. Der Abstieg gilt als ausgemacht, die Zukunft als vergeben, der Optimismus als naiv.</p>
+        <p><b>Wir glauben das nicht.</b></p>
+        <p>Wir glauben an ein Deutschland, das sich gerade neu erfindet. Leise, konsequent und ohne auf Erlaubnis zu warten. In den Laboren der Universitäten. In den Hinterhöfen. In den Gründerzentren, die niemand kennt, und in den Garagen, in denen die nächsten großen Ideen entstehen.</p>
+        <p>Wir glauben, dass wirtschaftliche Stärke und gesellschaftliche Verantwortung kein Widerspruch sind, sondern einander brauchen. Dass Innovation ohne Werte genauso scheitert wie Werte ohne Mut zum Handeln.</p>
+        <p><b>Wir nehmen das Narrativ des Niedergangs nicht hin.</b></p>
+        <p>Nicht weil wir die Probleme nicht sehen. Sondern weil wir wissen, dass Resignation keine Lösung ist. Weil wir täglich Menschen begegnen, die anpacken, riskieren und aufbauen. Und die in dieser öffentlichen Erzählung schlicht nicht vorkommen.</p>
+        <p>Diese Menschen sind der Grund für diese Tour.</p>
+        <p>Wir fahren durch Deutschland, weil wir zeigen wollen, was hier wirklich passiert. Nicht für Geld. Nicht für Follower. Sondern weil wir überzeugt sind: Wer junge Menschen sieht, die Unternehmen gründen, Probleme lösen und Verantwortung übernehmen, der fängt an, selbst zu denken. Selbst zu glauben. Selbst zu machen.</p>
+        <p><b>Das ist das Ziel.</b></p>
+        <div class="mbox">
+          <div class="mbt">Young Founders Network</div>
+          <p class="mbb">Wir sind über 1.900 junge Menschen zwischen 14 und 25 Jahren, die nicht auf bessere Bedingungen warten. Wir bauen sie. Wir sind bedingungslos optimistisch. Nicht weil alles gut ist, sondern weil wir wissen, dass es besser werden kann. Und weil wir bereit sind, dafür zu arbeiten.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="map">
+  <div class="container">
+    <div class="s-head fi">
+      <span class="label green">Tourroute</span>
+      <h2 class="s-title" style="color:var(--white)">DIE <span class="inv">ROUTE</span></h2>
+    </div>
+    <div class="map-wrap fi">
+      <div class="map-gbg"></div>
+      <svg class="map-svg" viewBox="0 0 560 680" xmlns="http://www.w3.org/2000/svg">
+        <defs><filter id="gw"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+        <path d="M262 42 L295 38 L334 30 L370 46 L390 72 L398 102 L420 122 L432 152 L424 180 L444 200 L450 228 L434 250 L416 264 L424 292 L434 322 L420 352 L400 376 L390 406 L372 434 L352 458 L330 482 L308 504 L284 520 L260 508 L236 486 L212 460 L194 432 L180 404 L164 374 L152 346 L138 320 L124 298 L118 268 L128 244 L112 228 L100 204 L108 180 L126 162 L118 136 L132 112 L124 84 L142 62 L164 46 L194 36 L228 30 Z" fill="rgba(255,237,0,0.03)" stroke="#222" stroke-width="1.5"/>
+        <polyline points="350,198 258,160 278,252 256,328 288,406 300,468" fill="none" stroke="#FFED00" stroke-width="2" stroke-dasharray="10,6" opacity="0.35"/>
+        <circle cx="368" cy="194" r="14" fill="#FFED00" opacity="0.12" filter="url(#gw)"/>
+        <circle cx="368" cy="194" r="7" fill="#FFED00"/>
+        <text x="385" y="199" fill="#FFED00" font-family="'Space Mono',monospace" font-size="12" font-weight="bold">Berlin</text>
+        <text x="385" y="213" fill="#555" font-family="'Space Mono',monospace" font-size="9">AKTUELL</text>
+        <circle cx="260" cy="156" r="5" fill="#88FEBF" opacity="0.75"/>
+        <text x="272" y="160" fill="#88FEBF" font-family="'Space Mono',monospace" font-size="10">Hamburg</text>
+        <circle cx="256" cy="326" r="5" fill="#88FEBF" opacity="0.65"/>
+        <text x="198" y="330" fill="#88FEBF" font-family="'Space Mono',monospace" font-size="10">Frankfurt</text>
+        <circle cx="288" cy="408" r="5" fill="#88FEBF" opacity="0.65"/>
+        <text x="300" y="412" fill="#88FEBF" font-family="'Space Mono',monospace" font-size="10">München</text>
+        <circle cx="196" cy="278" r="5" fill="#88FEBF" opacity="0.5"/>
+        <text x="138" y="282" fill="#88FEBF" font-family="'Space Mono',monospace" font-size="10">Köln</text>
+        <circle cx="264" cy="376" r="5" fill="#88FEBF" opacity="0.5"/>
+        <text x="206" y="380" fill="#88FEBF" font-family="'Space Mono',monospace" font-size="10">Stuttgart</text>
+        <circle cx="346" cy="278" r="4" fill="#333"/>
+        <text x="356" y="282" fill="#333" font-family="'Space Mono',monospace" font-size="9">Leipzig</text>
+        <circle cx="310" cy="146" r="4" fill="#333"/>
+        <text x="320" y="150" fill="#333" font-family="'Space Mono',monospace" font-size="9">Hannover</text>
+        <line x1="0" y1="340" x2="560" y2="340" stroke="#141414" stroke-width="1"/>
+        <line x1="280" y1="0" x2="280" y2="680" stroke="#141414" stroke-width="1"/>
+        <circle cx="24" cy="628" r="6" fill="#FFED00"/><text x="36" y="632" fill="#FFED00" font-family="'Space Mono',monospace" font-size="9">Aktuell</text>
+        <circle cx="108" cy="628" r="6" fill="#88FEBF"/><text x="120" y="632" fill="#88FEBF" font-family="'Space Mono',monospace" font-size="9">Geplant</text>
+        <circle cx="198" cy="628" r="5" fill="#222" stroke="#333" stroke-width="1"/><text x="210" y="632" fill="#444" font-family="'Space Mono',monospace" font-size="9">Weitere</text>
+      </svg>
+    </div>
+    <div class="cg fi">
+      <div class="cr"><span class="cn">Berlin</span><span class="cs sc">Aktuell</span></div>
+      <div class="cr"><span class="cn">Hamburg</span><span class="cs sp">Geplant</span></div>
+      <div class="cr"><span class="cn">München</span><span class="cs sp">Geplant</span></div>
+      <div class="cr"><span class="cn">Frankfurt</span><span class="cs sp">Geplant</span></div>
+      <div class="cr"><span class="cn">Köln</span><span class="cs sp">Geplant</span></div>
+      <div class="cr"><span class="cn">Stuttgart</span><span class="cs sp">Geplant</span></div>
+      <div class="cr"><span class="cn">Düsseldorf</span><span class="cs sp">Geplant</span></div>
+      <div class="cr"><span class="cn">Leipzig</span><span class="cs sp">Geplant</span></div>
+      <div class="cr"><span class="cn">Hannover</span><span class="cs sp">Geplant</span></div>
+      <div class="cr"><span class="cn">Dresden</span><span class="cs sp">Geplant</span></div>
+      <div class="cr"><span class="cn">Nürnberg</span><span class="cs sp">Geplant</span></div>
+      <div class="cr"><span class="cn">Bremen</span><span class="cs sp">Geplant</span></div>
+      <div class="cr"><span class="cn">Dortmund</span><span class="cs sp">Geplant</span></div>
+      <div class="cr"><span class="cn">Karlsruhe</span><span class="cs sp">Geplant</span></div>
+      <div class="cr"><span class="cn">Freiburg</span><span class="cs sp">Geplant</span></div>
+      <div class="cr"><span class="cn">Kiel</span><span class="cs sp">Geplant</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="team">
+  <div class="container">
+    <div class="s-head fi">
+      <span class="label">Wer wir sind</span>
+      <h2 class="s-title">DAS <span class="inv">TEAM</span></h2>
+    </div>
+    <div class="tg fi">
+      <div class="tc ft">
+        <div class="tcp">🎬</div>
+        <div class="tcn">Darius Göttert</div>
+        <div class="tcr">Founder & Host</div>
+        <div class="tcb">YFN Co-Founder. Serial Entrepreneur. Initiator der Startup Germany Tour 2026. Er fährt die Tour, führt die Interviews und ist das Gesicht hinter der Kamera.</div>
+      </div>
+      <div class="tc">
+        <div class="tcp">📸</div>
+        <div class="tcn">Camera Lead</div>
+        <div class="tcr">Hauptkamera</div>
+        <div class="tcb">Wird noch besetzt. Bewerbungen über das YFN-Netzwerk.</div>
+      </div>
+      <div class="tc">
+        <div class="tcp">✂️</div>
+        <div class="tcn">Editor</div>
+        <div class="tcr">Post Production</div>
+        <div class="tcb">Wird noch besetzt. Probe-Schnitt läuft gerade.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="partner">
+  <div class="container">
+    <div class="s-head fi">
+      <span class="label">Sponsoring</span>
+      <h2 class="s-title">UNSERE <span class="inv">PARTNER</span></h2>
+      <p class="pi">Werde Teil der größten Startup-Dokumentation Deutschlands. Sponsoring-Potenzial: 280.000 € · Realistisches Ziel: 196.000 €</p>
+    </div>
+    <div class="pg fi">
+      <div class="ps fi2">JUNI</div>
+      <div class="ps">Partner 2</div>
+      <div class="ps">Partner 3</div>
+      <div class="ps">Partner 4</div>
+      <div class="ps">Partner 5</div>
+      <div class="ps">Partner 6</div>
+      <div class="ps">Partner 7</div>
+      <div class="ps">Partner 8</div>
+      <div class="ps">Partner 9</div>
+      <div class="ps add">+ Dein Name</div>
+    </div>
+  </div>
+</section>
+
+<section id="feeds">
+  <div class="container">
+    <div class="s-head fi">
+      <span class="label">Content</span>
+      <h2 class="s-title">FEED <span class="inv">LIVE</span></h2>
+    </div>
+    <div class="fdg fi">
+      <div>
+        <div class="fdhd"><div class="fdic">▶</div><div><div class="fdtl">YouTube</div><div class="fdhl">@YoungFoundersNetwork</div></div></div>
+        <div class="fdph"><div class="fdpi">▶</div><div class="fdpt">YouTube-Kanal kommt bald</div><p class="fdps">Sobald der Kanal live ist, erscheinen hier die letzten Vlogs automatisch.</p></div>
+      </div>
+      <div>
+        <div class="fdhd"><div class="fdic" style="background:var(--purple)">◈</div><div><div class="fdtl">Instagram</div><div class="fdhl">@youngfoundersnetwork</div></div></div>
+        <div class="fdph"><div class="fdpi">◈</div><div class="fdpt">Instagram Feed</div><p class="fdps">Instagram-Integration wird eingebunden sobald der Account aktiv ist.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cta">
+  <div class="container">
+    <h2 class="cta-h">MACH<br>MIT.</h2>
+    <p class="cta-s">Werde Teil der größten Startup-Dokumentation, die Deutschland je gesehen hat. Sponsoring-Anfragen und Kooperationen jetzt.</p>
+    <div class="cta-f">
+      <input type="email" class="cta-i" id="cta-email" placeholder="deine@email.de"/>
+      <button class="cta-b" onclick="handleCTA()">Anfragen →</button>
+    </div>
+    <p class="cta-d">Oder direkt: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="81e5e0f3e8f4f2c1f8eef4efe6e7eef4efe5e4f3f2efe4f5f6eef3eaafe5e4">[email&#160;protected]</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="fi3">
+      <div>
+        <div class="fbn"><span>YFN</span> STARTUP TOUR</div>
+        <div class="fbd">Darius Göttert und das Young Founders Network zeigen in 9 Wochen, was in Deutschland wirklich passiert. 16 Städte. 50 Drehtage.</div>
+      </div>
+      <div class="fcol"><div class="fct">Tour</div><ul><li><a href="#dashboard">KPI Dashboard</a></li><li><a href="#nextup">Next Up</a></li><li><a href="#map">Tourroute</a></li><li><a href="#manifest">Manifest</a></li></ul></div>
+      <div class="fcol"><div class="fct">Sponsoring</div><ul><li><a href="#partner">Partner werden</a></li><li><a href="#cta">Anfragen</a></li><li><a href="#">Two-Pager (PDF)</a></li><li><a href="#">Pitch Deck</a></li></ul></div>
+      <div class="fcol"><div class="fct">Netzwerk</div><ul><li><a href="#">YFN Website</a></li><li><a href="#">LinkedIn</a></li><li><a href="#">Instagram</a></li><li><a href="#">YouTube</a></li></ul></div>
+    </div>
+    <div class="fb">
+      <div class="fl">© 2026 Young Founders Network · Impressum · Datenschutz</div>
+      <div class="fso"><a href="#">LinkedIn</a><a href="#">Instagram</a><a href="#">TikTok</a><a href="#">YouTube</a></div>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+const NOTION={token:'HIER_DEINEN_TOKEN_EINTRAGEN',db:{kpi:'22cf860f054e479ca7115ae226e2a2bc',tourplan:'080cddd2277b4b11bd0fd6ac5d7455c1'}};
+const FB={kpi:{raised:0,sponsoring:0,sponsors:0,vlogs:0,reels:0,li_posts:0,wa:0,hours:0,photos:0,li_f:36000,tt_f:0,ig_f:700,yt_f:0,camp:0,ltu:0,interviews:0,cities:0,hubs:0,events:0,media:0},tour:{current:{city:'—',date:'Tour startet am 13. April 2026',events:[]},upcoming:[]}};
+
+async function fNotion(dbId){const r=await fetch(`/.netlify/functions/notion?db=${dbId}`);if(!r.ok)throw new Error(r.status);return r.json();}
+
+function parseKPI(pages){const p=pages[0]?.properties;if(!p)return null;const n=k=>p[k]?.number??0;return{raised:n('YFN Fundraise Gesamt'),sponsoring:n('Sponsoring Einnahmen'),sponsors:n('Aktive Sponsoren'),vlogs:n('Vlogs'),reels:n('Reels'),li_posts:n('LinkedIn Posts'),wa:n('WhatsApp Pushes'),hours:n('Stunden gedreht'),photos:n('Bilder'),li_f:n('LinkedIn Follower'),tt_f:n('TikTok Follower'),ig_f:n('Instagram Follower'),yt_f:n('YouTube Follower'),camp:n('Summer Camp Bewerbungen'),ltu:n('Life Teach Us Stunden'),interviews:n('Interviews'),cities:n('Städte besucht'),hubs:n('Startup Hubs besucht'),events:n('Events besucht'),media:n('Medienberichte')};}
+
+function parseTour(pages){const today=new Date().toISOString().split('T')[0];const sorted=[...pages].sort((a,b)=>(a.properties['Datum']?.date?.start??'').localeCompare(b.properties['Datum']?.date?.start??''));const city=p=>p.properties['Stadt']?.title?.[0]?.plain_text??'—';const date=p=>p.properties['Datum']?.date?.start??'—';const cur=sorted.find(p=>{const s=date(p),e=p.properties['Datum']?.date?.end??s;return s<=today&&today<=e;});const up=sorted.filter(p=>date(p)>today).slice(0,4);return{current:cur?{city:city(cur),date:date(cur),events:[]}:{city:'Noch keine Stadt',date:'Tour startet 13. April 2026',events:[]},upcoming:up.map((p,i)=>({city:city(p),date:date(p),num:String(i+1).padStart(2,'0')}))}}
+
+const fN=n=>n>=1e6?(n/1e6).toFixed(1)+'M':n>=1000?(n/1000).toFixed(0)+'k':String(n);
+const fE=n=>n>=1e6?(n/1e6).toFixed(2)+' Mio €':n>=1000?(n/1000).toFixed(0)+'k €':n+' €';
+const pct=(v,m)=>Math.min(100,Math.round(v/m*100));
+const set=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v;};
+const setW=(id,v)=>{const el=document.getElementById(id);if(el)el.style.width=v+'%';};
+
+function renderKPI(d){
+  set('kpi-raised',fE(d.raised));const rp=pct(d.raised,1000000);set('kpi-raised-pct',rp+'%');setW('kpi-raised-bar',rp);
+  set('kpi-sponsoring',fE(d.sponsoring));set('kpi-sponsors',d.sponsors);
+  const sp=pct(d.sponsoring,196000);set('kpi-spon-pct',sp+'%');setW('kpi-spon-bar',sp);
+  const pp=pct(d.sponsoring,70000);set('kpi-pp-pct',pp+'%');setW('kpi-pp-bar',pp);
+  set('kpi-vlogs',d.vlogs);setW('kpi-vlogs-b',pct(d.vlogs,100));
+  set('kpi-reels',d.reels);setW('kpi-reels-b',pct(d.reels,500));
+  set('kpi-li-posts',d.li_posts);setW('kpi-li-b',pct(d.li_posts,150));
+  set('kpi-wa',d.wa);setW('kpi-wa-b',pct(d.wa,200));
+  set('kpi-hours',d.hours+'h');set('kpi-photos',fN(d.photos));
+  set('kpi-li-f',fN(d.li_f));set('kpi-tt-f',fN(d.tt_f));set('kpi-ig-f',fN(d.ig_f));set('kpi-yt-f',fN(d.yt_f));
+  set('kpi-camp',d.camp);setW('kpi-camp-b',pct(d.camp,300));
+  set('kpi-ltu',d.ltu);setW('kpi-ltu-b',pct(d.ltu,50));
+  set('kpi-interviews',d.interviews);
+  set('kpi-cities',d.cities);set('kpi-hubs',d.hubs);set('kpi-events',d.events);set('kpi-media',d.media);
+}
+
+function renderTour(t){
+  set('nu-city',t.current.city);set('nu-date',t.current.date);
+  if(t.current.events?.length){document.getElementById('nu-evts').innerHTML=t.current.events.map(e=>`<div class="nu-evt"><span class="nu-en">${e.name}</span><span class="nu-et">${e.time||''}</span></div>`).join('');}
+  const ul=document.getElementById('nu-up');
+  ul.innerHTML=t.upcoming.length?t.upcoming.map(u=>`<div class="nu-item"><div><div class="nu-ic">${u.city}</div><div class="nu-id">${u.date}</div></div><div class="nu-in">${u.num}</div></div>`).join(''):`<div style="display:flex;align-items:center;justify-content:center;flex:1;color:#555;font-family:var(--fm);font-size:11px;background:var(--white);border:2px solid var(--black);padding:28px;">Tourplan wird in Notion gepflegt.</div>`;
+}
+
+async function init(){
+  const loading=document.getElementById('kpi-loading'),content=document.getElementById('kpi-content'),error=document.getElementById('kpi-error');
+  if(NOTION.token==='DEIN_NOTION_INTEGRATION_TOKEN'){loading.style.display='none';content.style.display='block';renderKPI(FB.kpi);renderTour(FB.tour);return;}
+  try{
+    const[kr,tr]=await Promise.all([fNotion(NOTION.db.kpi),fNotion(NOTION.db.tourplan)]);
+    loading.style.display='none';content.style.display='block';
+    renderKPI(parseKPI(kr.results)||FB.kpi);renderTour(parseTour(tr.results));
+  }catch(e){console.error('[Notion]',e);loading.style.display='none';content.style.display='block';error.style.display='block';renderKPI(FB.kpi);renderTour(FB.tour);}
+}
+
+function handleCTA(){const email=document.getElementById('cta-email').value.trim();if(!email||!email.includes('@')){alert('Bitte eine gültige E-Mail-Adresse eingeben.');return;}window.location.href=`mailto:darius@youngfoundersnetwork.de?subject=Sponsoring-Anfrage%20YFN%20Tour%202026&body=Hallo%20Darius%2C%0A%0Aich%20interessiere%20mich%20f%C3%BCr%20eine%20Sponsoring-Kooperation.%0A%0AMeine%20E-Mail%3A%20${encodeURIComponent(email)}`;}
+
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.is
