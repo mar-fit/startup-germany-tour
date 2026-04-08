@@ -524,7 +524,7 @@ footer{background:var(--black);padding:64px 0 40px;border-top:3px solid var(--ye
       <input type="email" class="cta-i" id="cta-email" placeholder="deine@email.de"/>
       <button class="cta-b" onclick="handleCTA()">Anfragen →</button>
     </div>
-    <p class="cta-d">Oder direkt: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="81e5e0f3e8f4f2c1f8eef4efe6e7eef4efe5e4f3f2efe4f5f6eef3eaafe5e4">[email&#160;protected]</a></p>
+    <p class="cta-d">Oder direkt: <a href="mailto:marco@startupgermany-tour.de">marco@startupgermany-tour.de</a></p>
   </div>
 </section>
 
@@ -605,7 +605,7 @@ async function init(){
   }catch(e){console.error('[Notion]',e);showKpiShell();if(error)error.style.display='block';renderKPI(FB.kpi);renderTour(FB.tour);}
 }
 
-function handleCTA(){const email=document.getElementById('cta-email').value.trim();if(!email||!email.includes('@')){alert('Bitte eine gültige E-Mail-Adresse eingeben.');return;}window.location.href=`mailto:darius@youngfoundersnetwork.de?subject=Sponsoring-Anfrage%20YFN%20Tour%202026&body=Hallo%20Darius%2C%0A%0Aich%20interessiere%20mich%20f%C3%BCr%20eine%20Sponsoring-Kooperation.%0A%0AMeine%20E-Mail%3A%20${encodeURIComponent(email)}`;}
+function handleCTA(){const email=document.getElementById('cta-email').value.trim();if(!email||!email.includes('@')){alert('Bitte eine gültige E-Mail-Adresse eingeben.');return;}window.location.href=`mailto:marco@startupgermany-tour.de?subject=Sponsoring-Anfrage%20YFN%20Tour%202026&body=Hallo%20Marco%2C%0A%0Aich%20interessiere%20mich%20f%C3%BCr%20eine%20Sponsoring-Kooperation.%0A%0AMeine%20E-Mail%3A%20${encodeURIComponent(email)}`;}
 
 function revealFiNearViewport(){
   const h=window.innerHeight||document.documentElement.clientHeight;
