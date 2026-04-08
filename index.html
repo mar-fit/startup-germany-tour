@@ -617,4 +617,11 @@ async function init(){
 
 function handleCTA(){const email=document.getElementById('cta-email').value.trim();if(!email||!email.includes('@')){alert('Bitte eine gültige E-Mail-Adresse eingeben.');return;}window.location.href=`mailto:darius@youngfoundersnetwork.de?subject=Sponsoring-Anfrage%20YFN%20Tour%202026&body=Hallo%20Darius%2C%0A%0Aich%20interessiere%20mich%20f%C3%BCr%20eine%20Sponsoring-Kooperation.%0A%0AMeine%20E-Mail%3A%20${encodeURIComponent(email)}`;}
 
-const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.is
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{
+  if(e.isIntersecting)e.target.classList.add('v');
+}),{rootMargin:'0px 0px -10% 0px',threshold:0.05});
+document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+init();
+</script>
+</body>
+</html>
