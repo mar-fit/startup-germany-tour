@@ -107,15 +107,20 @@ section{padding:96px 0}
 #nextup{background:var(--yellow)}
 #nextup .s-title{color:var(--black)}
 .nu-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:52px}
-.nu-cur{background:var(--black);padding:40px}
+.nu-cur{padding:40px;position:relative;overflow:hidden;background:var(--black)}
+.nu-cur-bg{position:absolute;inset:0;background-image:var(--city-img);background-size:cover;background-position:center;opacity:.3}
+.nu-cur-inner{position:relative;z-index:2}
 .nu-lt{font-family:var(--fm);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--green);display:flex;align-items:center;gap:8px;margin-bottom:20px}
 .ldot{width:8px;height:8px;background:var(--green);border-radius:50%;animation:pulse 1.5s infinite}
 .nu-city{font-family:var(--fd);font-size:64px;color:var(--white);line-height:1}
-.nu-date{font-family:var(--fm);font-size:11px;color:#555;margin-top:10px}
+.nu-date{font-family:var(--fm);font-size:11px;color:#666;margin-top:10px}
 .nu-evts{margin-top:24px}
 .nu-evt{border-top:1px solid #1a1a1a;padding:11px 0;display:flex;justify-content:space-between;align-items:center}
 .nu-en{font-size:13px;color:var(--white)}.nu-et{font-family:var(--fm);font-size:10px;color:#444}
 .nu-up{display:flex;flex-direction:column;gap:10px}
+.nu-next{background:var(--black);padding:40px;position:relative;overflow:hidden}
+.nu-next .nu-lt{color:var(--yellow)}
+.nu-next .nu-lt-dot{width:8px;height:8px;background:var(--yellow);border-radius:0}
 .nu-item{background:var(--white);border:2px solid var(--black);padding:18px 24px;display:flex;align-items:center;justify-content:space-between}
 .nu-ic{font-family:var(--fd);font-size:30px;color:var(--black)}
 .nu-id{font-family:var(--fm);font-size:9px;color:#888;text-transform:uppercase;letter-spacing:1px;margin-top:2px}
@@ -136,17 +141,17 @@ section{padding:96px 0}
 .mbt{font-family:var(--fd);font-size:32px;color:var(--yellow);margin-bottom:10px}
 .mbb{font-size:14px;line-height:1.75;color:#aaa}
 
-/* MAP */
-#map{background:var(--black)}
-#map .s-title{color:var(--white)}
-.map-wrap{margin-top:52px;background:#080808;border:1px solid #1c1c1c;padding:40px;display:flex;justify-content:center;align-items:center;min-height:560px;position:relative}
-.map-gbg{position:absolute;inset:0;background-image:linear-gradient(#111 1px,transparent 1px),linear-gradient(90deg,#111 1px,transparent 1px);background-size:40px 40px}
-.map-svg{position:relative;z-index:2;width:100%;max-width:560px}
-.cg{margin-top:40px;display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:#1a1a1a}
-.cr{background:#0d0d0d;padding:14px 18px;display:flex;align-items:center;justify-content:space-between}
-.cn{font-size:13px;font-weight:600;color:var(--white)}
-.cs{font-family:var(--fm);font-size:8px;letter-spacing:1px;text-transform:uppercase;padding:3px 8px}
-.sc{background:var(--green);color:var(--black)}.sp{border:1px solid #222;color:#3a3a3a}
+/* GALERIE */
+#galerie{background:var(--black)}
+#galerie .s-title{color:var(--white)}
+.gl-grid{margin-top:52px;display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:260px;gap:3px}
+.gl-item{position:relative;overflow:hidden;background:#0d0d0d;cursor:pointer}
+.gl-item.tall{grid-row:span 2}
+.gl-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.gl-item:hover img{transform:scale(1.05)}
+.gl-item-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#0d0d0d;border:1px dashed #222}
+.gl-item-ph span{font-family:var(--fm);font-size:9px;letter-spacing:1px;color:#333;text-transform:uppercase}
+.gl-label{display:none}
 
 /* TEAM */
 #team{background:var(--white)}
@@ -156,6 +161,9 @@ section{padding:96px 0}
 .tcard-ph svg{width:42%;max-width:120px;height:auto;color:#888;stroke:var(--black);opacity:.45}
 .tcard-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%}
 .tcard-body{padding:24px 22px 28px;display:flex;flex-direction:column;flex:1;gap:0}
+.tcard-li{display:inline-flex;align-items:center;gap:7px;margin-top:auto;padding-top:16px;font-family:var(--fm);font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--black);text-decoration:none;border-top:1px solid #e0e0e0}
+.tcard-li:hover{color:#0a66c2}
+.tcard-li svg{width:14px;height:14px;flex-shrink:0}
 .tcard-name{font-family:var(--fd);font-size:clamp(26px,2.8vw,34px);line-height:1;color:var(--black);letter-spacing:.5px;margin:0 0 8px}
 .tcard-role{font-family:var(--fm);font-size:9px;color:var(--black);letter-spacing:1.8px;text-transform:uppercase;margin:0 0 14px;padding-bottom:14px;border-bottom:1px solid #e0e0e0}
 .tcard-bio{font-size:14px;color:#444;line-height:1.65;margin:0;flex:1}
@@ -228,7 +236,7 @@ footer{background:var(--black);padding:64px 0 40px;border-top:3px solid var(--ye
     <a href="#dashboard">Dashboard</a>
     <a href="#nextup">Next Up</a>
     <a href="#manifest">Manifest</a>
-    <a href="#map">Route</a>
+    <a href="#galerie">Galerie</a>
     <a href="#team">Team</a>
     <a href="#partner">Partner</a>
     <a href="#cta" class="nav-cta">Sponsor werden</a>
@@ -336,17 +344,16 @@ footer{background:var(--black);padding:64px 0 40px;border-top:3px solid var(--ye
       <h2 class="s-title">NEXT <span class="invw">UP</span></h2>
     </div>
     <div class="nu-grid fi">
-      <div class="nu-cur">
-        <div class="nu-lt"><span class="ldot"></span>Aktuell vor Ort</div>
-        <div class="nu-city" id="nu-city">—</div>
-        <div class="nu-date" id="nu-date">Wird aus Notion geladen…</div>
-        <div class="nu-evts" id="nu-evts">
-          <div class="nu-evt"><span class="nu-en" style="color:#333">Keine Events eingetragen</span><span class="nu-et">—</span></div>
+      <div class="nu-cur" id="nu-cur-card">
+        <div class="nu-cur-bg" id="nu-cur-bg"></div>
+        <div class="nu-cur-inner">
+          <div class="nu-lt"><span class="ldot"></span>Aktuell vor Ort</div>
+          <div class="nu-city" id="nu-city">München</div>
+          <div class="nu-date" id="nu-date">13. April – 20. April 2026</div>
+          <div class="nu-evts" id="nu-evts"></div>
         </div>
       </div>
-      <div class="nu-up" id="nu-up">
-        <div style="display:flex;align-items:center;justify-content:center;flex:1;color:#555;font-family:var(--fm);font-size:11px;background:var(--white);border:2px solid var(--black);padding:28px;">Lade Tourplan aus Notion…</div>
-      </div>
+      <div class="nu-up" id="nu-up"></div>
     </div>
   </div>
 </section>
@@ -382,29 +389,41 @@ footer{background:var(--black);padding:64px 0 40px;border-top:3px solid var(--ye
   </div>
 </section>
 
-<section id="map">
+<section id="galerie">
   <div class="container">
     <div class="s-head fi">
-      <span class="label green">Tourroute</span>
-      <h2 class="s-title" style="color:var(--white)">DIE <span class="inv">ROUTE</span></h2>
+      <span class="label green">On Tour</span>
+      <h2 class="s-title">DIE <span class="inv">GALERIE</span></h2>
     </div>
-    <div class="cg fi">
-      <div class="cr"><span class="cn">Berlin</span><span class="cs sc">Aktuell</span></div>
-      <div class="cr"><span class="cn">Hamburg</span><span class="cs sp">Geplant</span></div>
-      <div class="cr"><span class="cn">München</span><span class="cs sp">Geplant</span></div>
-      <div class="cr"><span class="cn">Frankfurt</span><span class="cs sp">Geplant</span></div>
-      <div class="cr"><span class="cn">Köln</span><span class="cs sp">Geplant</span></div>
-      <div class="cr"><span class="cn">Stuttgart</span><span class="cs sp">Geplant</span></div>
-      <div class="cr"><span class="cn">Düsseldorf</span><span class="cs sp">Geplant</span></div>
-      <div class="cr"><span class="cn">Leipzig</span><span class="cs sp">Geplant</span></div>
-      <div class="cr"><span class="cn">Hannover</span><span class="cs sp">Geplant</span></div>
-      <div class="cr"><span class="cn">Dresden</span><span class="cs sp">Geplant</span></div>
-      <div class="cr"><span class="cn">Nürnberg</span><span class="cs sp">Geplant</span></div>
-      <div class="cr"><span class="cn">Bremen</span><span class="cs sp">Geplant</span></div>
-      <div class="cr"><span class="cn">Dortmund</span><span class="cs sp">Geplant</span></div>
-      <div class="cr"><span class="cn">Karlsruhe</span><span class="cs sp">Geplant</span></div>
-      <div class="cr"><span class="cn">Freiburg</span><span class="cs sp">Geplant</span></div>
-      <div class="cr"><span class="cn">Kiel</span><span class="cs sp">Geplant</span></div>
+  </div>
+  <div class="gl-grid fi" style="margin-top:52px">
+    <div class="gl-item">
+      <img src="assets/gallery-06.jpg" alt="On the road">
+      <div class="gl-label">On the Road</div>
+    </div>
+    <div class="gl-item tall">
+      <img src="assets/gallery-03.jpg" alt="Interview">
+      <div class="gl-label">München</div>
+    </div>
+    <div class="gl-item">
+      <img src="assets/gallery-07.jpg" alt="Interview">
+      <div class="gl-label">München</div>
+    </div>
+    <div class="gl-item">
+      <img src="assets/gallery-05.jpg" alt="Rooftop">
+      <div class="gl-label">München · rem by pace</div>
+    </div>
+    <div class="gl-item">
+      <img src="assets/gallery-04.jpg" alt="Interview">
+      <div class="gl-label">München</div>
+    </div>
+    <div class="gl-item tall">
+      <img src="assets/gallery-01.jpg" alt="On Tour">
+      <div class="gl-label">On Tour</div>
+    </div>
+    <div class="gl-item">
+      <img src="assets/gallery-02.jpg" alt="Startup Hub">
+      <div class="gl-label">München</div>
     </div>
   </div>
 </section>
@@ -418,32 +437,34 @@ footer{background:var(--black);padding:64px 0 40px;border-top:3px solid var(--ye
     <div class="tg fi">
       <article class="tcard">
         <div class="tcard-ph">
-          <img src="assets/darius-goettert.png" width="800" height="800" alt="Porträt: Darius Göttert" loading="lazy" decoding="async"/>
+          <img src="assets/darius-team.jpg" alt="Porträt: Darius Göttert" loading="lazy" decoding="async"/>
         </div>
         <div class="tcard-body">
           <h3 class="tcard-name">Darius Göttert</h3>
           <p class="tcard-role">Founder &amp; Host</p>
           <p class="tcard-bio">YFN Co-Founder. Serial Entrepreneur. Initiator der Startup Germany Tour 2026. Er fährt die Tour, führt die Interviews und ist das Gesicht hinter der Kamera.</p>
+          <a href="https://www.linkedin.com/in/darius-goettert/?locale=en" target="_blank" rel="noopener" class="tcard-li"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.35-1.85 3.59 0 4.25 2.36 4.25 5.43v6.31zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46C23.2 24 24 23.23 24 22.28V1.72C24 .77 23.2 0 22.23 0z"/></svg>LinkedIn</a>
         </div>
       </article>
       <article class="tcard">
-        <div class="tcard-ph" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <div class="tcard-ph">
+          <img src="assets/marco-team.jpg" alt="Porträt: Marco" loading="lazy" decoding="async"/>
         </div>
         <div class="tcard-body">
-          <h3 class="tcard-name">Name folgt</h3>
-          <p class="tcard-role">Camera Lead · Hauptkamera</p>
-          <p class="tcard-bio">Platzhalter — Bewerbungen und Anfragen über das Young Founders Network.</p>
+          <h3 class="tcard-name">Marco Fitzek</h3>
+          <p class="tcard-role">Head of Operations</p>
+          <p class="tcard-bio">Platzhalter — Profiltext folgt.</p>
+          <a href="https://www.linkedin.com/in/marcofitzek/" target="_blank" rel="noopener" class="tcard-li"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.35-1.85 3.59 0 4.25 2.36 4.25 5.43v6.31zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46C23.2 24 24 23.23 24 22.28V1.72C24 .77 23.2 0 22.23 0z"/></svg>LinkedIn</a>
         </div>
       </article>
       <article class="tcard">
-        <div class="tcard-ph" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <div class="tcard-ph">
+          <img src="assets/milo-team.jpg" alt="Porträt: Milo" loading="lazy" decoding="async"/>
         </div>
         <div class="tcard-body">
-          <h3 class="tcard-name">Name folgt</h3>
-          <p class="tcard-role">Editor · Post Production</p>
-          <p class="tcard-bio">Platzhalter — Profiltext und Credits werden ergänzt, sobald das Team komplett ist.</p>
+          <h3 class="tcard-name">Milo</h3>
+          <p class="tcard-role">Chief Happiness Officer</p>
+          <p class="tcard-bio">Platzhalter — Profiltext folgt.</p>
         </div>
       </article>
     </div>
@@ -510,7 +531,7 @@ footer{background:var(--black);padding:64px 0 40px;border-top:3px solid var(--ye
         <div class="fbn"><span>YFN</span> STARTUP TOUR</div>
         <div class="fbd">Darius Göttert und das Young Founders Network zeigen in 9 Wochen, was in Deutschland wirklich passiert. 16 Städte. 50 Drehtage.</div>
       </div>
-      <div class="fcol"><div class="fct">Tour</div><ul><li><a href="#dashboard">KPI Dashboard</a></li><li><a href="#nextup">Next Up</a></li><li><a href="#map">Tourroute</a></li><li><a href="#manifest">Manifest</a></li></ul></div>
+      <div class="fcol"><div class="fct">Tour</div><ul><li><a href="#dashboard">KPI Dashboard</a></li><li><a href="#nextup">Next Up</a></li><li><a href="#galerie">Galerie</a></li><li><a href="#manifest">Manifest</a></li></ul></div>
       <div class="fcol"><div class="fct">Sponsoring</div><ul><li><a href="#partner">Partner werden</a></li><li><a href="#cta">Anfragen</a></li><li><a href="#">Two-Pager (PDF)</a></li><li><a href="#">Pitch Deck</a></li></ul></div>
       <div class="fcol"><div class="fct">Netzwerk</div><ul><li><a href="#">YFN Website</a></li><li><a href="#">LinkedIn</a></li><li><a href="#">Instagram</a></li><li><a href="#">YouTube</a></li></ul></div>
     </div>
@@ -523,7 +544,7 @@ footer{background:var(--black);padding:64px 0 40px;border-top:3px solid var(--ye
 <noscript><style>.fi,.fi.v{opacity:1!important;transform:none!important}</style></noscript>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const NOTION={db:{kpi:'22cf860f054e479ca7115ae226e2a2bc',tourplan:'080cddd2277b4b11bd0fd6ac5d7455c1'}};
-const FB={kpi:{vlogs:0,reels:0,li_posts:0,wa:0,hours:0,photos:0,li_f:30000,tt_f:0,ig_f:700,yt_f:0,camp:0,ltu:0,interviews:0,cities:0,hubs:0,events:0,media:0},tour:{current:{city:'—',date:'Tour startet am 13. April 2026',events:[]},upcoming:[]}};
+const FB={kpi:{vlogs:0,reels:0,li_posts:0,wa:0,hours:0,photos:0,li_f:30000,tt_f:0,ig_f:700,yt_f:0,camp:0,ltu:0,interviews:0,cities:0,hubs:0,events:0,media:0},tour:{current:{city:'München',date:'13. April – 19. April 2026',events:[]},upcoming:[{city:'Augsburg',date:'20. April 2026',num:'02'},{city:'Berlin',date:'20. – 22. April 2026',num:'03'},{city:'Hamburg',date:'22. – 24. April 2026',num:'04'}]}};
 
 async function fNotion(dbId){const r=await fetch(`/.netlify/functions/notion?db=${dbId}`);if(!r.ok)throw new Error(r.status);return r.json();}
 
@@ -565,11 +586,36 @@ function renderKPI(d){
   set('kpi-cities',d.cities);set('kpi-hubs',d.hubs);set('kpi-events',d.events);set('kpi-media',d.media);
 }
 
+const CITY_IMAGES={
+  'München':'https://images.unsplash.com/photo-1595867818082-083862f3d630?w=1200&q=80',
+  'Augsburg':'assets/city-augsburg.png',
+  'Hamburg':'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80',
+  'Berlin':'https://images.unsplash.com/photo-1560969184-10fe8719e047?w=1200&q=80',
+  'Köln':'https://images.unsplash.com/photo-1587474260584-136574528ed5?w=1200&q=80',
+  'Frankfurt':'https://images.unsplash.com/photo-1519677100203-a0e668c92439?w=1200&q=80',
+};
+
 function renderTour(t){
-  set('nu-city',t.current.city);set('nu-date',t.current.date);
-  if(t.current.events?.length){document.getElementById('nu-evts').innerHTML=t.current.events.map(e=>`<div class="nu-evt"><span class="nu-en">${e.name}</span><span class="nu-et">${e.time||''}</span></div>`).join('');}
+  set('nu-city',t.current.city);
+  set('nu-date',t.current.date);
+  const bg=document.getElementById('nu-cur-bg');
+  if(bg){const img=CITY_IMAGES[t.current.city];bg.style.backgroundImage=img?`url(${img})`:'none';}
+  if(t.current.events?.length){
+    document.getElementById('nu-evts').innerHTML=t.current.events.map(e=>`<div class="nu-evt"><span class="nu-en">${e.name}</span><span class="nu-et">${e.time||''}</span></div>`).join('');
+  }
   const ul=document.getElementById('nu-up');
-  ul.innerHTML=t.upcoming.length?t.upcoming.map(u=>`<div class="nu-item"><div><div class="nu-ic">${u.city}</div><div class="nu-id">${u.date}</div></div><div class="nu-in">${u.num}</div></div>`).join(''):`<div style="display:flex;align-items:center;justify-content:center;flex:1;color:#555;font-family:var(--fm);font-size:11px;background:var(--white);border:2px solid var(--black);padding:28px;">Tourplan wird in Notion gepflegt.</div>`;
+  if(!t.upcoming.length){ul.innerHTML='';return;}
+  const next=t.upcoming[0];
+  const rest=t.upcoming.slice(1);
+  const nextImg=CITY_IMAGES[next.city]||'';
+  ul.innerHTML=`<div class="nu-next" style="${nextImg?`--next-bg:url(${nextImg})`:''}">
+    ${nextImg?`<div style="position:absolute;inset:0;background-image:url(${nextImg});background-size:cover;background-position:center;opacity:.25;pointer-events:none"></div>`:''}
+    <div style="position:relative;z-index:2">
+      <div class="nu-lt"><span class="nu-lt-dot"></span>Nächster Stopp</div>
+      <div class="nu-city">${next.city}</div>
+      <div class="nu-date">${next.date}</div>
+    </div>
+  </div>${rest.map(u=>`<div class="nu-item"><div><div class="nu-ic">${u.city}</div><div class="nu-id">${u.date}</div></div><div class="nu-in">${u.num}</div></div>`).join('')}`;
 }
 
 function showKpiShell(){
