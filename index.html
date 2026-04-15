@@ -21,8 +21,8 @@ a{color:inherit;text-decoration:none}
 
 /* NAV */
 #nav{position:fixed;top:0;left:0;right:0;z-index:200;height:58px;background:var(--black);border-bottom:2px solid var(--yellow);display:flex;align-items:center;justify-content:space-between;padding:0 48px}
-.nav-brand{font-family:var(--fd);font-size:20px;letter-spacing:3px;color:var(--white);display:flex;align-items:center;gap:10px}
-.nav-tag{background:var(--yellow);color:var(--black);padding:2px 8px;font-size:18px}
+.nav-brand{display:flex;align-items:center}
+.nav-logo{height:34px;width:auto;display:block}
 .nav-links{display:flex;gap:28px;align-items:center}
 .nav-links a{font-family:var(--fm);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--white);transition:color .2s}
 .nav-links a:hover{color:var(--yellow)}
@@ -35,6 +35,7 @@ a{color:inherit;text-decoration:none}
 .hero-ey{font-family:var(--fm);font-size:10px;letter-spacing:3px;color:var(--yellow);text-transform:uppercase;border:1px solid var(--yellow);display:inline-block;padding:5px 14px;margin-bottom:28px}
 .hero-h1{font-family:var(--fd);font-size:clamp(68px,7.5vw,118px);line-height:.92;letter-spacing:1px;color:var(--white)}
 .hero-h1 .y{color:var(--yellow)}
+.hero-typo-logo{position:relative;z-index:2;width:clamp(220px,42vw,580px);height:auto;opacity:.9;pointer-events:none}
 .hero-by{margin-top:28px;font-size:17px;line-height:1.7;color:var(--gray2);max-width:430px}
 .hero-by strong{color:var(--white)}
 .hero-stats{margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#1c1c1c;border:1px solid #222}
@@ -222,7 +223,7 @@ footer{background:var(--black);padding:64px 0 40px;border-top:3px solid var(--ye
 <body>
 
 <nav id="nav">
-  <div class="nav-brand"><span class="nav-tag">YFN</span> STARTUP TOUR</div>
+  <div class="nav-brand"><img src="assets/logo-nav.svg" alt="Startup Germany Tour" class="nav-logo"></div>
   <div class="nav-links">
     <a href="#dashboard">Dashboard</a>
     <a href="#nextup">Next Up</a>
@@ -252,7 +253,7 @@ footer{background:var(--black);padding:64px 0 40px;border-top:3px solid var(--ye
   <div class="hero-right">
     <div class="hero-gbg"></div>
     <div class="hero-glow"></div>
-    <p class="hero-typo" aria-hidden="true">STARTUP<br>GERMANY<br>TOUR</p>
+    <img src="assets/logo.svg" alt="" aria-hidden="true" class="hero-typo-logo">
   </div>
 </section>
 
@@ -277,36 +278,10 @@ footer{background:var(--black);padding:64px 0 40px;border-top:3px solid var(--ye
   <div class="container">
     <div class="dash-top fi">
       <div><span class="label green">Live Tracking</span><h2 class="s-title">KPI <span class="inv">DASHBOARD</span></h2></div>
-      <div class="notion-live"><span class="pulse"></span>Live aus Notion</div>
     </div>
     <div id="kpi-loading" class="kpi-load">Lade Daten aus Notion…</div>
     <div id="kpi-content" style="display:none">
       <div class="kg">
-        <div class="kc full">
-          <div class="kch">💰 Fundraising & Finanzen</div>
-          <div class="fsplit">
-            <div>
-              <div class="fbig" id="kpi-raised">0 €</div>
-              <div class="fgoal">YFN Fundraise-Ziel: 1.000.000 €</div>
-              <div style="margin-top:20px">
-                <div class="br"><span class="bn">Gesamt-Fortschritt</span><span class="bp" id="kpi-raised-pct">0%</span></div>
-                <div class="bt"><div class="bf gr" id="kpi-raised-bar" style="width:0%"></div></div>
-              </div>
-            </div>
-            <div>
-              <div class="ms">
-                <div><span class="msv" id="kpi-sponsoring">0 €</span><span class="msl">Sponsoring-Einnahmen</span></div>
-                <div><span class="msv" id="kpi-sponsors">0</span><span class="msl">Aktive Sponsoren</span></div>
-              </div>
-              <div style="margin-top:28px">
-                <div class="br"><span class="bn">Sponsoring-Ziel (196.000 €)</span><span class="bp" id="kpi-spon-pct">0%</span></div>
-                <div class="bt" style="margin-bottom:14px"><div class="bf g" id="kpi-spon-bar" style="width:0%"></div></div>
-                <div class="br"><span class="bn">Presenting Partner (70.000 €)</span><span class="bp" id="kpi-pp-pct">0%</span></div>
-                <div class="bt"><div class="bf" id="kpi-pp-bar" style="width:0%"></div></div>
-              </div>
-            </div>
-          </div>
-        </div>
         <div class="kc">
           <div class="kch">🎬 Content & Social Media</div>
           <div class="cbl">
@@ -547,12 +522,27 @@ footer{background:var(--black);padding:64px 0 40px;border-top:3px solid var(--ye
 </footer>
 <noscript><style>.fi,.fi.v{opacity:1!important;transform:none!important}</style></noscript>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-const NOTION={token:'HIER_DEINEN_TOKEN_EINTRAGEN',db:{kpi:'22cf860f054e479ca7115ae226e2a2bc',tourplan:'080cddd2277b4b11bd0fd6ac5d7455c1'}};
-const FB={kpi:{raised:0,sponsoring:0,sponsors:0,vlogs:0,reels:0,li_posts:0,wa:0,hours:0,photos:0,li_f:36000,tt_f:0,ig_f:700,yt_f:0,camp:0,ltu:0,interviews:0,cities:0,hubs:0,events:0,media:0},tour:{current:{city:'—',date:'Tour startet am 13. April 2026',events:[]},upcoming:[]}};
+const NOTION={db:{kpi:'22cf860f054e479ca7115ae226e2a2bc',tourplan:'080cddd2277b4b11bd0fd6ac5d7455c1'}};
+const FB={kpi:{vlogs:0,reels:0,li_posts:0,wa:0,hours:0,photos:0,li_f:30000,tt_f:0,ig_f:700,yt_f:0,camp:0,ltu:0,interviews:0,cities:0,hubs:0,events:0,media:0},tour:{current:{city:'—',date:'Tour startet am 13. April 2026',events:[]},upcoming:[]}};
 
 async function fNotion(dbId){const r=await fetch(`/.netlify/functions/notion?db=${dbId}`);if(!r.ok)throw new Error(r.status);return r.json();}
 
-function parseKPI(pages){const p=pages[0]?.properties;if(!p)return null;const n=k=>p[k]?.number??0;return{raised:n('YFN Fundraise Gesamt'),sponsoring:n('Sponsoring Einnahmen'),sponsors:n('Aktive Sponsoren'),vlogs:n('Vlogs'),reels:n('Reels'),li_posts:n('LinkedIn Posts'),wa:n('WhatsApp Pushes'),hours:n('Stunden gedreht'),photos:n('Bilder'),li_f:n('LinkedIn Follower'),tt_f:n('TikTok Follower'),ig_f:n('Instagram Follower'),yt_f:n('YouTube Follower'),camp:n('Summer Camp Bewerbungen'),ltu:n('Life Teach Us Stunden'),interviews:n('Interviews'),cities:n('Städte besucht'),hubs:n('Startup Hubs besucht'),events:n('Events besucht'),media:n('Medienberichte')};}
+function parseKPI(pages){
+  const m={};
+  pages.forEach(p=>{
+    const name=p.properties?.Name?.title?.[0]?.plain_text;
+    const val=p.properties?.Aktuell?.number??0;
+    if(name)m[name]=val;
+  });
+  const g=k=>m[k]??0;
+  return{
+    vlogs:g('YouTube Vlogs'),reels:g('Reels'),li_posts:g('LinkedIn Posts'),
+    wa:g('WhatsApp Pushes'),hours:g('Stunden Content gedreht'),photos:g('Bilder gemacht'),
+    li_f:g('LinkedIn Follower'),tt_f:g('TikTok Follower'),ig_f:g('Instagram Follower'),yt_f:g('YouTube Abonnenten'),
+    camp:g('Summer Camp Bewerbungen'),ltu:g('Life Teach Us Stunden'),interviews:g('Interviews geführt'),
+    cities:g('Besuchte Städte'),hubs:g('Besuchte Startup Hubs'),events:g('Besuchte Events'),media:g('Medienberichte'),
+  };
+}
 
 function parseTour(pages){const today=new Date().toISOString().split('T')[0];const sorted=[...pages].sort((a,b)=>(a.properties['Datum']?.date?.start??'').localeCompare(b.properties['Datum']?.date?.start??''));const city=p=>p.properties['Stadt']?.title?.[0]?.plain_text??'—';const date=p=>p.properties['Datum']?.date?.start??'—';const cur=sorted.find(p=>{const s=date(p),e=p.properties['Datum']?.date?.end??s;return s<=today&&today<=e;});const up=sorted.filter(p=>date(p)>today).slice(0,4);return{current:cur?{city:city(cur),date:date(cur),events:[]}:{city:'Noch keine Stadt',date:'Tour startet 13. April 2026',events:[]},upcoming:up.map((p,i)=>({city:city(p),date:date(p),num:String(i+1).padStart(2,'0')}))}}
 
@@ -563,10 +553,6 @@ const set=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v;}
 const setW=(id,v)=>{const el=document.getElementById(id);if(el)el.style.width=v+'%';};
 
 function renderKPI(d){
-  set('kpi-raised',fE(d.raised));const rp=pct(d.raised,1000000);set('kpi-raised-pct',rp+'%');setW('kpi-raised-bar',rp);
-  set('kpi-sponsoring',fE(d.sponsoring));set('kpi-sponsors',d.sponsors);
-  const sp=pct(d.sponsoring,196000);set('kpi-spon-pct',sp+'%');setW('kpi-spon-bar',sp);
-  const pp=pct(d.sponsoring,70000);set('kpi-pp-pct',pp+'%');setW('kpi-pp-bar',pp);
   set('kpi-vlogs',d.vlogs);setW('kpi-vlogs-b',pct(d.vlogs,100));
   set('kpi-reels',d.reels);setW('kpi-reels-b',pct(d.reels,500));
   set('kpi-li-posts',d.li_posts);setW('kpi-li-b',pct(d.li_posts,150));
@@ -586,8 +572,6 @@ function renderTour(t){
   ul.innerHTML=t.upcoming.length?t.upcoming.map(u=>`<div class="nu-item"><div><div class="nu-ic">${u.city}</div><div class="nu-id">${u.date}</div></div><div class="nu-in">${u.num}</div></div>`).join(''):`<div style="display:flex;align-items:center;justify-content:center;flex:1;color:#555;font-family:var(--fm);font-size:11px;background:var(--white);border:2px solid var(--black);padding:28px;">Tourplan wird in Notion gepflegt.</div>`;
 }
 
-function notionConfigured(){const t=NOTION.token;return t&&t!=='DEIN_NOTION_INTEGRATION_TOKEN'&&t!=='HIER_DEINEN_TOKEN_EINTRAGEN';}
-
 function showKpiShell(){
   const loading=document.getElementById('kpi-loading'),content=document.getElementById('kpi-content');
   if(loading)loading.style.display='none';
@@ -596,7 +580,6 @@ function showKpiShell(){
 
 async function init(){
   const error=document.getElementById('kpi-error');
-  if(!notionConfigured()){showKpiShell();renderKPI(FB.kpi);renderTour(FB.tour);return;}
   const withTimeout=(p,ms)=>Promise.race([p,new Promise((_,rej)=>setTimeout(()=>rej(new Error('timeout')),ms))]);
   try{
     const[kr,tr]=await withTimeout(Promise.all([fNotion(NOTION.db.kpi),fNotion(NOTION.db.tourplan)]),12000);
