@@ -153,6 +153,19 @@ section{padding:96px 0}
 .gl-item-ph span{font-family:var(--fm);font-size:9px;letter-spacing:1px;color:#333;text-transform:uppercase}
 .gl-label{display:none}
 
+
+/* YOUTUBE */
+#latestvideo{background:var(--black)}
+#latestvideo .s-title{color:var(--white)}
+.yt-wrap{margin-top:52px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.yt-player{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;background:#0d0d0d}
+.yt-player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt-info{color:var(--white)}
+.yt-label{font-family:var(--fm);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--yellow);margin-bottom:16px}
+.yt-title{font-family:var(--fd);font-size:clamp(28px,3vw,44px);line-height:1.05;margin-bottom:20px}
+.yt-btn{display:inline-flex;align-items:center;gap:10px;margin-top:28px;background:var(--yellow);color:var(--black);font-family:var(--fm);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;padding:12px 24px;text-decoration:none;font-weight:700}
+.yt-btn:hover{background:var(--white)}
+
 /* TEAM */
 #team{background:var(--white)}
 .tg{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px;align-items:stretch}
@@ -171,12 +184,14 @@ section{padding:96px 0}
 /* PARTNER */
 #partner{background:var(--gray)}
 .pi{font-size:16px;color:#555;max-width:560px;margin-top:16px;line-height:1.7}
-.pg{margin-top:52px;display:grid;grid-template-columns:repeat(5,1fr);gap:2px;background:var(--black)}
-.ps{background:var(--white);height:110px;display:flex;align-items:center;justify-content:center;font-family:var(--fm);font-size:9px;color:#ccc;text-transform:uppercase;letter-spacing:1px;transition:background .2s,color .2s}
-.ps:hover{background:var(--yellow);color:var(--black)}
-.ps.fi2{font-family:var(--fd);font-size:24px;letter-spacing:2px;color:var(--black)}
-.ps.add{border:2px dashed #ccc;background:transparent;color:#bbb}
-.ps.add:hover{border-color:var(--black);background:var(--yellow);color:var(--black)}
+.pi-head{margin-top:52px;margin-bottom:0}
+.pi-title{font-family:var(--fd);font-size:clamp(28px,3vw,40px);letter-spacing:.5px;color:var(--black);margin:8px 0 0}
+.pg{margin-top:52px;display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:2px;background:var(--gray)}
+.ps{background:var(--white);height:140px;display:flex;align-items:center;justify-content:center;padding:28px;transition:background .2s}
+.ps img,.ps svg{max-height:56px;max-width:160px;width:auto;object-fit:contain;filter:grayscale(1);opacity:.8;transition:opacity .2s,filter .2s}
+.ps:hover img,.ps:hover svg{filter:grayscale(0);opacity:1}
+.ps.add{background:var(--black);font-family:var(--fm);font-size:9px;color:#555;text-transform:uppercase;letter-spacing:1px;text-decoration:none;border:none}
+.ps.add:hover{background:#111;color:var(--yellow)}
 
 /* FEEDS */
 #feeds{background:var(--white)}
@@ -222,7 +237,7 @@ footer{background:var(--black);padding:64px 0 40px;border-top:3px solid var(--ye
   #hero{grid-template-columns:1fr}.hero-right{display:none}
   .kg,.nu-grid,.mg,.fdg{grid-template-columns:1fr}.kc.full{grid-column:span 1}
   .fg{grid-template-columns:repeat(2,1fr)}.fsplit{grid-template-columns:1fr}
-  .tg{grid-template-columns:1fr}.pg{grid-template-columns:repeat(3,1fr)}
+  .tg{grid-template-columns:1fr}.pg{grid-template-columns:repeat(2,1fr)}
   .cg{grid-template-columns:repeat(2,1fr)}.fi3{grid-template-columns:1fr 1fr}
   .container{padding:0 24px}#nav{padding:0 24px}.nav-links{display:none}
 }
@@ -249,8 +264,8 @@ footer{background:var(--black);padding:64px 0 40px;border-top:3px solid var(--ye
     <h1 class="hero-h1">STARTUP<br><span class="y">GERMANY</span><br>TOUR</h1>
     <p class="hero-by"><strong>Darius Göttert</strong> und das <strong>Young Founders Network</strong> fahren 9 Wochen mit einem Kamerateam durch Deutschland. 16 Städte. Was hier wirklich passiert.</p>
     <div class="hero-stats">
-      <div class="hstat"><span class="hstat-n">16</span><span class="hstat-l">Städte</span></div>
-      <div class="hstat"><span class="hstat-n">50</span><span class="hstat-l">Drehtage</span></div>
+      <div class="hstat"><span class="hstat-n">16</span><span class="hstat-l">Bundesländer</span></div>
+      <div class="hstat"><span class="hstat-n">10</span><span class="hstat-l">Wochen</span></div>
       <div class="hstat"><span class="hstat-n">760+</span><span class="hstat-l">Content Pieces</span></div>
     </div>
     <div class="hero-btns">
@@ -333,7 +348,6 @@ footer{background:var(--black);padding:64px 0 40px;border-top:3px solid var(--ye
         </div>
       </div>
     </div>
-    <div id="kpi-error" class="kpi-err" style="display:none">⚠ Notion-Daten konnten nicht geladen werden.</div>
   </div>
 </section>
 
@@ -381,7 +395,7 @@ footer{background:var(--black);padding:64px 0 40px;border-top:3px solid var(--ye
         <p>Wir fahren durch Deutschland, weil wir zeigen wollen, was hier wirklich passiert. Nicht für Geld. Nicht für Follower. Sondern weil wir überzeugt sind: Wer junge Menschen sieht, die Unternehmen gründen, Probleme lösen und Verantwortung übernehmen, der fängt an, selbst zu denken. Selbst zu glauben. Selbst zu machen.</p>
         <p><b>Das ist das Ziel.</b></p>
         <div class="mbox">
-          <div class="mbt">Young Founders Network</div>
+          <div class="mbt"><a href="https://www.youngfounders.network/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:2px solid var(--yellow)">Young Founders Network</a></div>
           <p class="mbb">Wir sind über 1.900 junge Menschen zwischen 14 und 25 Jahren, die nicht auf bessere Bedingungen warten. Wir bauen sie. Wir sind bedingungslos optimistisch. Nicht weil alles gut ist, sondern weil wir wissen, dass es besser werden kann. Und weil wir bereit sind, dafür zu arbeiten.</p>
         </div>
       </div>
@@ -428,6 +442,26 @@ footer{background:var(--black);padding:64px 0 40px;border-top:3px solid var(--ye
   </div>
 </section>
 
+
+<section id="latestvideo">
+  <div class="container">
+    <div class="s-head fi">
+      <span class="label green">YouTube</span>
+      <h2 class="s-title">NEUESTES <span class="inv">VIDEO</span></h2>
+    </div>
+    <div class="yt-wrap fi">
+      <div class="yt-player">
+        <iframe src="https://www.youtube.com/embed?listType=playlist&list=UUrFe-00l7g0urHbXMDsTweA&index=1&rel=0&modestbranding=1" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="yt-info">
+        <div class="yt-label">Neuestes Video</div>
+        <div class="yt-title">Direkt vom Kanal</div>
+        <a href="https://www.youtube.com/channel/UCrFe-00l7g0urHbXMDsTweA" target="_blank" rel="noopener" class="yt-btn">Zum Kanal →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="team">
   <div class="container">
     <div class="s-head fi">
@@ -442,7 +476,7 @@ footer{background:var(--black);padding:64px 0 40px;border-top:3px solid var(--ye
         <div class="tcard-body">
           <h3 class="tcard-name">Darius Göttert</h3>
           <p class="tcard-role">Founder &amp; Host</p>
-          <p class="tcard-bio">YFN Co-Founder. Serial Entrepreneur. Initiator der Startup Germany Tour 2026. Er fährt die Tour, führt die Interviews und ist das Gesicht hinter der Kamera.</p>
+          <p class="tcard-bio">YFN Co-Founder. Serial Entrepreneur. General Partner Young Founders Fund. Initiator der Startup Germany Tour 2026.</p>
           <a href="https://www.linkedin.com/in/darius-goettert/?locale=en" target="_blank" rel="noopener" class="tcard-li"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.35-1.85 3.59 0 4.25 2.36 4.25 5.43v6.31zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46C23.2 24 24 23.23 24 22.28V1.72C24 .77 23.2 0 22.23 0z"/></svg>LinkedIn</a>
         </div>
       </article>
@@ -453,7 +487,7 @@ footer{background:var(--black);padding:64px 0 40px;border-top:3px solid var(--ye
         <div class="tcard-body">
           <h3 class="tcard-name">Marco Fitzek</h3>
           <p class="tcard-role">Head of Operations</p>
-          <p class="tcard-bio">Platzhalter — Profiltext folgt.</p>
+          <p class="tcard-bio">Unternehmer und Schaltzentrale der Startup Germany Tour 2026.</p>
           <a href="https://www.linkedin.com/in/marcofitzek/" target="_blank" rel="noopener" class="tcard-li"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.35-1.85 3.59 0 4.25 2.36 4.25 5.43v6.31zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46C23.2 24 24 23.23 24 22.28V1.72C24 .77 23.2 0 22.23 0z"/></svg>LinkedIn</a>
         </div>
       </article>
@@ -464,7 +498,7 @@ footer{background:var(--black);padding:64px 0 40px;border-top:3px solid var(--ye
         <div class="tcard-body">
           <h3 class="tcard-name">Milo</h3>
           <p class="tcard-role">Chief Happiness Officer</p>
-          <p class="tcard-bio">Platzhalter — Profiltext folgt.</p>
+          <p class="tcard-bio">Zuständig für gute Laune und viele Haare.</p>
         </div>
       </article>
     </div>
@@ -475,42 +509,31 @@ footer{background:var(--black);padding:64px 0 40px;border-top:3px solid var(--ye
   <div class="container">
     <div class="s-head fi">
       <span class="label">Sponsoring</span>
-      <h2 class="s-title">UNSERE <span class="inv">PARTNER</span></h2>
-      <p class="pi">Werde Teil der größten Startup-Dokumentation Deutschlands. Sponsoring-Potenzial: 280.000 € · Realistisches Ziel: 196.000 €</p>
+      <h2 class="s-title">UNSERE <span class="inv">SUPPORTER</span></h2>
+      <p class="pi">Als Sponsor der SGT26 positionierst du deine Marke im Zentrum einer Bewegung, die Deutschland neu denken lässt – und erreichst genau die Menschen, die morgen gründen.</p>
     </div>
     <div class="pg fi">
-      <div class="ps fi2">JUNI</div>
-      <div class="ps">Partner 2</div>
-      <div class="ps">Partner 3</div>
-      <div class="ps">Partner 4</div>
-      <div class="ps">Partner 5</div>
-      <div class="ps">Partner 6</div>
-      <div class="ps">Partner 7</div>
-      <div class="ps">Partner 8</div>
-      <div class="ps">Partner 9</div>
-      <a href="#cta" class="ps add">+ Dein Name</a>
+      <div class="ps"><img src="assets/partner-qonto.png" alt="Qonto"></div>
+      <div class="ps"><img src="assets/partner-juni.jpeg" alt="JUNI"></div>
+      <div class="ps"><img src="assets/partner-ff.svg" alt="Partner"></div>
+      <a href="#cta" class="ps add">+ Deine Brand</a>
+    </div>
+    <div class="pi-head fi">
+      <span class="label">Initiativen</span>
+      <h3 class="pi-title">UNSERE <span class="inv">PARTNER</span></h3>
+    </div>
+    <div class="pg fi">
+      <div class="ps"><img src="assets/partner-yfn.svg" alt="Young Founders Network"></div>
+      <div class="ps"><img src="assets/partner-ltu.png" alt="Life Teach Us"></div>
+      <div class="ps"><img src="assets/partner-delta.png" alt="The Delta" style="filter:invert(1)"></div>
+      <div class="ps"><img src="assets/partner-startmunich.jpg" alt="Start Munich"></div>
+      <div class="ps"><img src="assets/partner-legmon.jpeg" alt="Legmon"></div>
+      <div class="ps"><img src="assets/partner-werk1.jpg" alt="Werk 1"></div>
+      <a href="#cta" class="ps add">+ Deine Initiative</a>
     </div>
   </div>
 </section>
 
-<section id="feeds">
-  <div class="container">
-    <div class="s-head fi">
-      <span class="label">Content</span>
-      <h2 class="s-title">FEED <span class="inv">LIVE</span></h2>
-    </div>
-    <div class="fdg fi">
-      <div>
-        <div class="fdhd"><div class="fdic">▶</div><div><div class="fdtl">YouTube</div><div class="fdhl">@DariusGöttert</div></div></div>
-        <div class="fdph"><div class="fdpi">▶</div><div class="fdpt">YouTube-Kanal kommt bald</div><p class="fdps">Sobald der Kanal live ist, erscheinen hier die letzten Vlogs automatisch.</p></div>
-      </div>
-      <div>
-        <div class="fdhd"><div class="fdic" style="background:var(--purple)">◈</div><div><div class="fdtl">Instagram</div><div class="fdhl">@dariusgoettert</div></div></div>
-        <div class="fdph"><div class="fdpi">◈</div><div class="fdpt">Instagram Feed</div><p class="fdps">Instagram-Integration wird eingebunden sobald der Account aktiv ist.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <section id="cta">
   <div class="container">
@@ -633,6 +656,21 @@ async function init(){
     renderKPI(parseKPI(kr.results)||FB.kpi);renderTour(parseTour(tr.results));
   }catch(e){console.error('[Notion]',e);showKpiShell();if(error)error.style.display='block';renderKPI(FB.kpi);renderTour(FB.tour);}
 }
+
+async function loadYouTube(){
+  try{
+    const r=await fetch('/.netlify/functions/youtube');
+    if(!r.ok)return;
+    const v=await r.json();
+    if(!v||!v.id)return;
+    document.getElementById('yt-player').innerHTML=`<iframe src="https://www.youtube.com/embed/${v.id}?rel=0&modestbranding=1" allowfullscreen loading="lazy"></iframe>`;
+    document.getElementById('yt-title').textContent=v.title||'';
+    if(v.published){const d=new Date(v.published);document.getElementById('yt-date').textContent=d.toLocaleDateString('de-DE',{day:'2-digit',month:'long',year:'numeric'});}
+    const btn=document.getElementById('yt-btn');
+    if(btn)btn.href=`https://www.youtube.com/watch?v=${v.id}`;
+  }catch(e){console.error('[YouTube]',e);}
+}
+loadYouTube();
 
 function handleCTA(){const email=document.getElementById('cta-email').value.trim();if(!email||!email.includes('@')){alert('Bitte eine gültige E-Mail-Adresse eingeben.');return;}window.location.href=`mailto:marco@startupgermany-tour.de?subject=Sponsoring-Anfrage%20YFN%20Tour%202026&body=Hallo%20Marco%2C%0A%0Aich%20interessiere%20mich%20f%C3%BCr%20eine%20Sponsoring-Kooperation.%0A%0AMeine%20E-Mail%3A%20${encodeURIComponent(email)}`;}
 
