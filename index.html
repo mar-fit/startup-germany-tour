@@ -267,13 +267,14 @@ footer{background:var(--black);padding:64px 0 40px;border-top:3px solid var(--ye
       <h2 class="s-title">NEUESTES <span class="inv">VIDEO</span></h2>
     </div>
     <div class="yt-wrap fi">
-      <div class="yt-player">
+      <div class="yt-player" id="yt-player">
         <iframe src="https://www.youtube.com/embed?listType=playlist&list=UUrFe-00l7g0urHbXMDsTweA&index=1&rel=0&modestbranding=1" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="yt-info">
         <div class="yt-label">Neuestes Video</div>
-        <div class="yt-title">Direkt vom Kanal</div>
-        <a href="https://www.youtube.com/channel/UCrFe-00l7g0urHbXMDsTweA" target="_blank" rel="noopener" class="yt-btn">Zum Kanal →</a>
+        <div class="yt-title" id="yt-title">Direkt vom Kanal</div>
+        <div id="yt-date" style="font-size:13px;color:var(--gray2);margin-bottom:4px"></div>
+        <a href="https://www.youtube.com/channel/UCrFe-00l7g0urHbXMDsTweA" target="_blank" rel="noopener" class="yt-btn" id="yt-btn">Zum Kanal →</a>
       </div>
     </div>
   </div>
