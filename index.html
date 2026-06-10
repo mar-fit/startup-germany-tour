@@ -224,14 +224,14 @@ footer{background:var(--black);padding:64px 0 40px;border-top:3px solid var(--ye
   <div class="hero-left">
     <div class="hero-ey">13. April – 22. Juni 2026</div>
     <h1 class="hero-h1">STARTUP<br><span class="y">GERMANY</span><br>TOUR</h1>
-    <p class="hero-by"><strong>Darius Göttert</strong> und das <strong>Young Founders Network</strong> fahren 10 Wochen mit einem Kamerateam durch Deutschland. 16 Städte. Was hier wirklich passiert.</p>
+    <p class="hero-by"><strong>Darius Göttert</strong> und das <strong>Young Founders Network</strong> fahren 10 Wochen mit einem Kamerateam durch das deutsche Startup-Ökosystem. 16 Städte. Was hier wirklich passiert.</p>
     <div class="hero-stats">
       <div class="hstat"><span class="hstat-n">16</span><span class="hstat-l">Bundesländer</span></div>
       <div class="hstat"><span class="hstat-n">10</span><span class="hstat-l">Wochen</span></div>
       <div class="hstat"><span class="hstat-n">760+</span><span class="hstat-l">Content Pieces</span></div>
     </div>
     <div class="hero-btns">
-      <a href="#cta" class="btn-y">Jetzt Partner werden</a>
+      <a href="mailto:marco@startupgermany-tour.de?subject=Partner-Anfrage%20Startup%20Germany%20Tour%202026" class="btn-y">Jetzt Partner werden</a>
       <a href="#manifest" class="btn-g">Das Manifest lesen</a>
     </div>
   </div>
@@ -246,13 +246,13 @@ footer{background:var(--black);padding:64px 0 40px;border-top:3px solid var(--ye
   <div class="tt">
     <span class="ti">YFN Startup Germany Tour 2026</span><span class="ti td">✦</span>
     <span class="ti">Darius Göttert × Young Founders Network</span><span class="ti td">✦</span>
-    <span class="ti">10 Wochen · 16 Städte · 50 Drehtage</span><span class="ti td">✦</span>
+    <span class="ti">10 Wochen · 16 Städte</span><span class="ti td">✦</span>
     <span class="ti">760+ Content Pieces</span><span class="ti td">✦</span>
     <span class="ti">1.900+ Young Founders</span><span class="ti td">✦</span>
     <span class="ti">Jetzt Sponsor werden</span><span class="ti td">✦</span>
     <span class="ti">YFN Startup Germany Tour 2026</span><span class="ti td">✦</span>
     <span class="ti">Darius Göttert × Young Founders Network</span><span class="ti td">✦</span>
-    <span class="ti">10 Wochen · 16 Städte · 50 Drehtage</span><span class="ti td">✦</span>
+    <span class="ti">10 Wochen · 16 Städte</span><span class="ti td">✦</span>
     <span class="ti">760+ Content Pieces</span><span class="ti td">✦</span>
     <span class="ti">1.900+ Young Founders</span><span class="ti td">✦</span>
     <span class="ti">Jetzt Sponsor werden</span><span class="ti td">✦</span>
@@ -548,7 +548,7 @@ async function loadYouTube(){
     const v=await r.json();
     if(!v||!v.id)return;
     document.getElementById('yt-player').innerHTML=`<iframe src="https://www.youtube.com/embed/${v.id}?rel=0&modestbranding=1" allowfullscreen loading="lazy"></iframe>`;
-    document.getElementById('yt-title').textContent=v.title||'';
+    const dec=s=>{const t=document.createElement('textarea');t.innerHTML=s;return t.value;};document.getElementById('yt-title').textContent=dec(v.title||'');
     if(v.published){const d=new Date(v.published);document.getElementById('yt-date').textContent=d.toLocaleDateString('de-DE',{day:'2-digit',month:'long',year:'numeric'});}
     const btn=document.getElementById('yt-btn');
     if(btn)btn.href=`https://www.youtube.com/watch?v=${v.id}`;
