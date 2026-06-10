@@ -16,18 +16,16 @@ exports.handler = async function() {
     const entries = xml.match(/<entry>([\s\S]*?)<\/entry>/g) || [];
     if (!entries.length) return { statusCode: 200, headers, body: JSON.stringify(null) };
 
-    // Skip Shorts: oEmbed returns portrait aspect (thumbnail_width < thumbnail_height) for Shorts
     let result = null;
     for (const e of entries) {
       const rawId = e.match(/<yt:videoId>([^<]+)<\/yt:videoId>/)?.[1];
       if (!rawId) continue;
 
       try {
-        const check = await fetch(`https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${rawId}&format=json`);
-        if (check.ok) {
-          const oembed = await check.json();
-          if (oembed.thumbnail_width < oembed.thumbnail_height) continue;
-        }
+        // YouTube redirects /shorts/{id} to /watch?v={id} for regular videos.
+        // If the final URL still contains /shorts/, it's a Short — skip it.
+        const check = await fetch(`https://www.youtube.com/shorts/${rawId}`, { redirect: 'follow' });
+        if (check.url.includes('/shorts/')) continue;
       } catch (_) { /* assume long-form if check fails */ }
 
       const title = getTag(e, 'title');
